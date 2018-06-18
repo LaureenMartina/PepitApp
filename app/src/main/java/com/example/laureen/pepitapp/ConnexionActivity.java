@@ -22,7 +22,7 @@ public class ConnexionActivity extends AppCompatActivity implements ConnectView 
 
         connectPresenter = new ConnectPresenter(this);
 
-        btnConnexion = findViewById(R.id.btn_signup);
+        btnConnexion = findViewById(R.id.btn_signin);
 
         btnConnexion.setOnClickListener(new View.OnClickListener() {
             @Override
