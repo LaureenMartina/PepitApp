@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">PepitCodingGame</string>
+    <string name="inscription">Inscription</string>
+    <string name="connexion">connexion</string>
+    <string name="pseudo">Pseudo</string>
+    <string name="mot_de_passe">Mot de Passe</string>
+    <string name="age">Age</string>
+</resources>
