@@ -83,7 +83,7 @@ public class InscriptPresenter {
         /*Call<List<User>> list = service.getUser();
         list.enqueue(userCallback);*/
 
-        Call<User> createUser = service.createUser(new User("Escape", "game", "fun", "azerty", 21, "fun@gmail.com", ""));
+        Call<User> createUser = service.createUser(new User("Escape", "game", "fun", "azerty", "azerty", 21, "fun@gmail.com", ""));
         createUser.enqueue(createUserCallback);
 
         /*com.androidnetworking.common.ANRequest.PostRequestBuilder obj = AndroidNetworking.post("http://192.168.1.18:3000/auth/signup/")

@@ -60,7 +60,8 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
         retrofit = new retrofit2.Retrofit.Builder()
                 //.baseUrl("http://192.168.1.18:3000/")
-                .baseUrl("http://10.33.1.196:3000/")
+                //.baseUrl("http://10.33.1.196:3000/")
+                .baseUrl("http://10.0.2.2:3000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
