@@ -21,7 +21,7 @@ public class InscriptionActivity extends AppCompatActivity implements InscriptVi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inscription);
 
-        inscriptPresenter = new InscriptPresenter(this);
+        inscriptPresenter = new InscriptPresenter(this, MainActivity.pepitService);
 
         btnInscrip = findViewById(R.id.btn_signup);
 

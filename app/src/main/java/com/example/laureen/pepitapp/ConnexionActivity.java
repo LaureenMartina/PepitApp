@@ -27,7 +27,7 @@ public class ConnexionActivity extends AppCompatActivity implements ConnectView 
         btnConnexion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //connectPresenter.verifyData("aa","bb","aze","azerty","azerty");
+                //connectPresenter.verifyData("oreo","azerty");
             }
         });
     }
@@ -36,6 +36,6 @@ public class ConnexionActivity extends AppCompatActivity implements ConnectView 
         //btnInscrip.setTextColor(Color.GREEN);
         TextView textV = findViewById(R.id.text);
         // mettre la progressbar a gone visibility
-        textV.setText("T'as reussi c genial");
+        textV.setText("Connexion reussie");
     }
 }

@@ -20,6 +20,13 @@ public class ConnectPresenter {
         this.connectView = connectView;
     }
 
+    public void verifyData(String username, String password){
+        if(username == "" || password == ""){
+            //show msg
+        } else {
+
+        }
+    }
 
     public void signin(/*String username, String password*/) {
         AndroidNetworking.post("http://localhost:3000/auth/signup")

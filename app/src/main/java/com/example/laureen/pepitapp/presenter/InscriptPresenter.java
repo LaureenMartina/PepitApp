@@ -6,23 +6,35 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.example.laureen.pepitapp.PepitService;
+import com.example.laureen.pepitapp.model.User;
 import com.example.laureen.pepitapp.view.InscriptView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class InscriptPresenter {
 
     public InscriptView inscriptView;
     private static final String TAG = "SignUpActivity";
+    private PepitService service;
 
     //constructeur
-    public InscriptPresenter(InscriptView inscriptView) {
+    public InscriptPresenter(InscriptView inscriptView, PepitService service) {
         this.inscriptView = inscriptView;
+        this.service = service;
+
+
     }
 
-    public void verifyData(String lastname, String firstname, String pseudo, String password, String confirmPassword){
-        if(lastname == "" || firstname == "" || pseudo == "" || password == ""){
+    public void verifyData(String lastname, String firstname, String username, String password, String confirmPassword){
+        if(lastname == "" || firstname == "" || username == "" || password == ""){
             //show msg
         } else {
             if (password != confirmPassword){
@@ -35,14 +47,59 @@ public class InscriptPresenter {
     }
 
     public void signup(/*String lastname, String firstname, String pseudo, String password, String confirmPassword*/){
-        AndroidNetworking.post("http://localhost:3000/auth/signup")
-                .addBodyParameter("lastname", "oreo")
+
+        Callback<List<User>> userCallback = new Callback<List<User>>() {
+            @Override
+            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
+                if (response.isSuccessful()) {
+
+                } else {
+                    Log.d("QuestionsCallback", "Code: " + response.code() + " Message: " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<User>> call, Throwable t) {
+                t.printStackTrace();
+            }
+        };
+
+        Callback<User> createUserCallback = new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                if (response.isSuccessful()) {
+
+                } else {
+                    Log.d("QuestionsCallback", "Code: " + response.code() + " Message: " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                t.printStackTrace();
+            }
+        };
+
+        /*Call<List<User>> list = service.getUser();
+        list.enqueue(userCallback);*/
+
+        Call<User> createUser = service.createUser(new User("firstname", "lastname", "username", 21, "email", "profil",1));
+        createUser.enqueue(createUserCallback);
+
+        /*com.androidnetworking.common.ANRequest.PostRequestBuilder obj = AndroidNetworking.post("http://192.168.1.18:3000/auth/signup/")
+                .addHeaders("content-Type", "application/json")
+                .addBodyParameter("lastname", "oreo2")
                 .addBodyParameter("firstname", "kitkat")
-                .addBodyParameter("pseudo", "biscuit")
+                .addBodyParameter("username", "biscuit")
                 .addBodyParameter("password", "azerty")
                 .addBodyParameter("confirmPassword", "azerty")
-                .setPriority(Priority.LOW)
-                .build()
+                .addBodyParameter("mail", "oreo@gmail.com")
+                .addBodyParameter("age", "15")
+                .addBodyParameter("profil", "ninja")
+                .addBodyParameter("userType", "1")
+                 .setTag("test")
+                .setPriority(Priority.LOW);
+                obj.build()
                 .getAsJSONObject(new JSONObjectRequestListener() { //get reponse sous forme de json
                     @Override
                     public void onResponse(JSONObject response) {
@@ -66,9 +123,10 @@ public class InscriptPresenter {
 
                     @Override
                     public void onError(ANError error) {
-                        inscriptView.onClickOnButtonSignUp();//affichage visuel
+                        //inscriptView.onClickOnButtonSignUp();//affichage visuel
                         Log.d(TAG, "onError: " + error);
                     }
-                });
+                });*/
     }
+
 }

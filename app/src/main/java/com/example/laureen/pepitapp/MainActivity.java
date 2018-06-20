@@ -11,6 +11,8 @@ import com.bumptech.glide.Glide;
 import com.example.laureen.pepitapp.presenter.MainPresenter;
 import com.example.laureen.pepitapp.view.MainView;
 
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class MainActivity extends AppCompatActivity implements MainView {
 
     MainPresenter mainPresenter;
@@ -18,6 +20,8 @@ public class MainActivity extends AppCompatActivity implements MainView {
     Button inscrip;
     Button connexion;
 
+    public static retrofit2.Retrofit retrofit;
+    public static PepitService pepitService;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +54,16 @@ public class MainActivity extends AppCompatActivity implements MainView {
                 gotoConnexion();
             }
         });
+        okhttp3.OkHttpClient client = new okhttp3.OkHttpClient().newBuilder().build();
+
+        com.androidnetworking.AndroidNetworking.initialize(getApplicationContext(), client);
+
+        retrofit = new retrofit2.Retrofit.Builder()
+    .baseUrl("http://192.168.1.18:3000/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        pepitService = retrofit.create(PepitService.class);
     }
 
     @Override

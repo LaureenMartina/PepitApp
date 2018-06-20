@@ -7,109 +7,108 @@
     tools:context=".InscriptionActivity"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/text"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:textColor="#FE5303"
-        android:text="@string/inscription"
-        android:gravity="center"
-        android:layout_marginTop="20dp"
-        />
+        android:layout_height="match_parent">
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#010101"
-        android:textSize="20dp"
-        android:gravity="center"
-        android:text="@string/pseudo"
-        android:layout_marginTop="20dp"
-        />
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="@string/inscription"
+                android:textColor="#FE5303"
+                android:textSize="30dp" />
 
-    <EditText
-        android:id="@+id/pseudo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="votre futur pseudo"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="@string/pseudo"
+                android:textColor="#010101"
+                android:textSize="20dp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/mot_de_passe"
-        android:gravity="center"
-        android:textColor="#010101"
-        android:textSize="20dp"
-        android:layout_marginTop="10dp"
-        />
+            <EditText
+                android:id="@+id/pseudo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:hint="votre futur pseudo" />
 
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="mot de passe entre 6 à 12 caractères"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:inputType="textPassword"
-        />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="@string/mot_de_passe"
+                android:textColor="#010101"
+                android:textSize="20dp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Confirmation Mot de Passe"
-        android:gravity="center"
-        android:textColor="#010101"
-        android:textSize="20dp"
-        android:layout_marginTop="10dp"
-        />
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:hint="mot de passe entre 6 à 12 caractères"
+                android:inputType="textPassword" />
 
-    <EditText
-        android:id="@+id/confirm_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="confirmation"
-        android:inputType="textPassword"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="Confirmation Mot de Passe"
+                android:textColor="#010101"
+                android:textSize="20dp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/age"
-        android:gravity="center"
-        android:textColor="#010101"
-        android:textSize="20dp"
-        android:layout_marginTop="10dp"
-        />
+            <EditText
+                android:id="@+id/confirm_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:hint="confirmation"
+                android:inputType="textPassword" />
 
-    <NumberPicker
-        android:id="@+id/age"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:solidColor="@color/colorAccent"
-        android:layout_marginTop="10dp"
-        />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="@string/age"
+                android:textColor="#010101"
+                android:textSize="20dp" />
 
-    <Button
-        android:id="@+id/btn_signup"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:text="S'inscrire"
-        android:layout_gravity="center"
-        android:layout_marginTop="15dp"
-        />
+            <NumberPicker
+                android:id="@+id/age"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:solidColor="@color/colorAccent" />
 
-    <ProgressBar
-        android:id="@+id/login_progress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:indeterminate="true"
-        android:visibility="gone"
-        android:layout_gravity="center"/>
+            <Button
+                android:id="@+id/btn_signup"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:text="S'inscrire" />
 
+            <ProgressBar
+                android:id="@+id/login_progress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
