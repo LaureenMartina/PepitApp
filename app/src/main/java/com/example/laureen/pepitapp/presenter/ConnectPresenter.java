@@ -29,7 +29,7 @@ public class ConnectPresenter {
     }
 
     public void signin(/*String username, String password*/) {
-        AndroidNetworking.post("http://localhost:3000/auth/signup")
+        /*AndroidNetworking.post("http://localhost:3000/auth/signup")
                 .addBodyParameter("username", "oreo")
                 .addBodyParameter("password", "azerty")
                 .setPriority(Priority.LOW)
@@ -60,6 +60,6 @@ public class ConnectPresenter {
                         connectView.onClickOnButtonSignIn();//affichage visuel
                         Log.d(TAG, "onError: " + error);
                     }
-                });
+                });*/
     }
 }

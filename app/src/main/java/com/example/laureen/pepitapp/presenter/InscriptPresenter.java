@@ -1,6 +1,8 @@
 package com.example.laureen.pepitapp.presenter;
 
+import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -29,19 +31,17 @@ public class InscriptPresenter {
     public InscriptPresenter(InscriptView inscriptView, PepitService service) {
         this.inscriptView = inscriptView;
         this.service = service;
-
-
     }
 
-    public void verifyData(String lastname, String firstname, String username, String password, String confirmPassword){
-        if(lastname == "" || firstname == "" || username == "" || password == ""){
-            //show msg
+    // fonction vérifiant le remplissage du formulaire d'inscription
+    public void verifyData(String lastname, String firstname, String username, String email, String password, String confirmPassword, Integer age){
+        if(lastname.equals("") || firstname.equals("") || username.equals("") || email.equals("") || password.equals("") || confirmPassword.equals("") || (age < 12 && age > 80)) {
+            inscriptView.failedVerif();
         } else {
-            if (password != confirmPassword){
-                //show msg
+            if (!password.equals(confirmPassword)){
+                inscriptView.failedVerifPassword();
             } else {
-                //return true;
-                inscriptView.showProgressBar();
+                inscriptView.validationData();
             }
         }
     }
@@ -83,7 +83,7 @@ public class InscriptPresenter {
         /*Call<List<User>> list = service.getUser();
         list.enqueue(userCallback);*/
 
-        Call<User> createUser = service.createUser(new User("firstname", "lastname", "username", 21, "email", "profil",1));
+        Call<User> createUser = service.createUser(new User("Escape", "game", "fun", "azerty", 21, "fun@gmail.com", ""));
         createUser.enqueue(createUserCallback);
 
         /*com.androidnetworking.common.ANRequest.PostRequestBuilder obj = AndroidNetworking.post("http://192.168.1.18:3000/auth/signup/")
@@ -123,7 +123,6 @@ public class InscriptPresenter {
 
                     @Override
                     public void onError(ANError error) {
-                        //inscriptView.onClickOnButtonSignUp();//affichage visuel
                         Log.d(TAG, "onError: " + error);
                     }
                 });*/

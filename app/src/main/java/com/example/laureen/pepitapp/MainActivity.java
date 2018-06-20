@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
         //instancier le Presenter de Main
         mainPresenter = new MainPresenter(this);
 
-        gif = findViewById(R.id.gif);
+        //gif = findViewById(R.id.gif);
         inscrip = findViewById(R.id.inscription);
         connexion = findViewById(R.id.connexion);
 
@@ -59,7 +59,8 @@ public class MainActivity extends AppCompatActivity implements MainView {
         com.androidnetworking.AndroidNetworking.initialize(getApplicationContext(), client);
 
         retrofit = new retrofit2.Retrofit.Builder()
-    .baseUrl("http://192.168.1.18:3000/")
+                //.baseUrl("http://192.168.1.18:3000/")
+                .baseUrl("http://10.33.1.196:3000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
