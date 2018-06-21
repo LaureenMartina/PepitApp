@@ -59,6 +59,11 @@ public class MainActivity extends AppCompatActivity implements MainView {
         com.androidnetworking.AndroidNetworking.initialize(getApplicationContext(), client);
 
         retrofit = new retrofit2.Retrofit.Builder()
+<<<<<<< HEAD
+=======
+                //.baseUrl("http://192.168.1.18:3000/")
+                //.baseUrl("http://10.33.1.196:3000/")
+>>>>>>> 46b538eadee8b1fd53255c71adf032f31b7b8c01
                 .baseUrl("http://10.0.2.2:3000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
