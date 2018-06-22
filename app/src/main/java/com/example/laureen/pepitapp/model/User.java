@@ -15,7 +15,7 @@ public class User {
     public int exp;
     public int type;
 
-    public User(String firstname, String lastname, String username, String password, String confirmPassword, int age, String email, String profil) {
+    public User(String firstname, String lastname, String username, String password, String confirmPassword, int age, String email, String profil, int type) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.username = username;
@@ -24,5 +24,6 @@ public class User {
         this.age = age;
         this.email = email;
         this.profil = profil;
+        this.type = type;
     }
 }

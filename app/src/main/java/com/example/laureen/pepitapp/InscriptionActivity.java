@@ -1,6 +1,5 @@
 package com.example.laureen.pepitapp;
 
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -89,8 +88,8 @@ public class InscriptionActivity extends AppCompatActivity implements InscriptVi
     public void showProgressBar(){
         //affichage de la progessbar animation
         ProgressBar progressBar = findViewById(R.id.login_progress);
-        progressBar.setVisibility(View.VISIBLE);
-        inscriptPresenter.signup();
+        //progressBar.setVisibility(View.VISIBLE);
+        progressBar.setProgress(50);
     }
 
     NumberPicker.OnValueChangeListener onValueChangeListener = new NumberPicker.OnValueChangeListener(){
@@ -112,8 +111,9 @@ public class InscriptionActivity extends AppCompatActivity implements InscriptVi
     }
 
     @Override
-    public void validationData() {
+    public void validationData(String firstname, String lastname, String username, String password, String confirmPassword, Integer age, String email) {
         Toast.makeText(this, "GOOD", Toast.LENGTH_SHORT).show();
-        inscriptPresenter.signup();
+        showProgressBar();
+        inscriptPresenter.signup(firstname, lastname, username, password, confirmPassword, age, email);
     }
 }

@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".InscriptionActivity" />
-        <activity android:name=".ConnexionActivity"></activity>
+        <activity android:name=".ConnexionActivity" />
+        <activity android:name=".SuccessInscriptionActivity"></activity>
     </application>
 
 </manifest>

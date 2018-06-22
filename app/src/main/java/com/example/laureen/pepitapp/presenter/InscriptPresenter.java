@@ -41,12 +41,12 @@ public class InscriptPresenter {
             if (!password.equals(confirmPassword)){
                 inscriptView.failedVerifPassword();
             } else {
-                inscriptView.validationData();
+                inscriptView.validationData(firstname, lastname, username, password, confirmPassword, age, email);
             }
         }
     }
 
-    public void signup(/*String lastname, String firstname, String pseudo, String password, String confirmPassword*/){
+    public void signup(String firstname, String lastname, String username, String password, String confirmPassword, int age, String email){
 
         Callback<List<User>> userCallback = new Callback<List<User>>() {
             @Override
@@ -83,7 +83,8 @@ public class InscriptPresenter {
         /*Call<List<User>> list = service.getUser();
         list.enqueue(userCallback);*/
 
-        Call<User> createUser = service.createUser(new User("Escape", "game", "fun", "azerty", "azerty", 21, "fun@gmail.com", ""));
+        //Call<User> createUser = service.createUser(new User("Escape", "game", "fun", "azerty", "azerty", 21, "fun@gmail.com", "ninja", 1));
+        Call<User> createUser = service.createUser(new User(firstname, lastname, username, password, confirmPassword, age, email, "junior", 1));
         createUser.enqueue(createUserCallback);
 
         /*com.androidnetworking.common.ANRequest.PostRequestBuilder obj = AndroidNetworking.post("http://192.168.1.18:3000/auth/signup/")

@@ -5,5 +5,5 @@ public interface InscriptView {
     public void showProgressBar();
     void failedVerif();
     void failedVerifPassword();
-    void validationData();
+    void validationData(String firstname, String lastname, String username, String password, String confirmPassword, Integer age, String email);
 }
