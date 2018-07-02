@@ -1,15 +1,29 @@
 package com.example.laureen.pepitapp;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.content.Context;
 import android.content.Intent;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.laureen.pepitapp.presenter.MainPresenter;
 import com.example.laureen.pepitapp.view.MainView;
+
+import java.util.ArrayList;
 
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -22,6 +36,9 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     public static retrofit2.Retrofit retrofit;
     public static PepitService pepitService;
+
+    private static String TAG = MainActivity.class.getSimpleName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
                 //.load(R.drawable.giphy) //mettre un gif dans le activity xml
                 //.load(internetUrl)
                 //.into(gif);
+
 
         inscrip.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,4 +95,5 @@ public class MainActivity extends AppCompatActivity implements MainView {
         Intent intent = new Intent(MainActivity.this, InscriptionActivity.class);
         startActivity(intent);
     }
+
 }

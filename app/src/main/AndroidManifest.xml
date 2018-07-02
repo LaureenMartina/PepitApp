@@ -20,7 +20,9 @@
         </activity>
         <activity android:name=".InscriptionActivity" />
         <activity android:name=".ConnexionActivity" />
-        <activity android:name=".SuccessInscriptionActivity"></activity>
+        <activity android:name=".SuccessInscriptionActivity" />
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".ProfilActivity"></activity>
     </application>
 
 </manifest>

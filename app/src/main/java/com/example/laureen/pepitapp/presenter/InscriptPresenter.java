@@ -42,6 +42,7 @@ public class InscriptPresenter {
                 inscriptView.failedVerifPassword();
             } else {
                 inscriptView.validationData(firstname, lastname, username, password, confirmPassword, age, email);
+                signup(firstname, lastname, username, password, confirmPassword, age, email);
             }
         }
     }

@@ -114,6 +114,5 @@ public class InscriptionActivity extends AppCompatActivity implements InscriptVi
     public void validationData(String firstname, String lastname, String username, String password, String confirmPassword, Integer age, String email) {
         Toast.makeText(this, "GOOD", Toast.LENGTH_SHORT).show();
         showProgressBar();
-        inscriptPresenter.signup(firstname, lastname, username, password, confirmPassword, age, email);
     }
 }
