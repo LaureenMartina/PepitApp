@@ -37,9 +37,11 @@ public class HomeActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mNavItems.add(new NavItem("Home", "Meetup destination", R.drawable.ic_warning));
-        mNavItems.add(new NavItem("Preferences", "Change your preferences", R.drawable.ic_warning));
-        mNavItems.add(new NavItem("About", "Get to know about us", R.drawable.ic_warning));
+        mNavItems.add(new NavItem("Profil", "votre compte personnel", R.drawable.ic_user));
+        mNavItems.add(new NavItem("Informations", "à connaître", R.drawable.ic_info));
+        mNavItems.add(new NavItem("Espace Jeux", "apprenez en jouant", R.drawable.ic_cible));
+        mNavItems.add(new NavItem("Preferences", "modifier vos paramètres", R.drawable.ic_params));
+        mNavItems.add(new NavItem("Déconnexion", "quittez", R.drawable.ic_power_off));
 
         // DrawerLayout
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
