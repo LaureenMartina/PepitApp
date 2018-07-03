@@ -53,7 +53,7 @@ public class HomeActivity extends AppCompatActivity {
         DrawerListAdapter adapter = new DrawerListAdapter(this, mNavItems);
         mDrawerList.setAdapter(adapter);
 
-        // Drawer Item click listeners
+        // Click listener sur Drawer Item
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -65,40 +65,38 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-
-                //invalidateOptionsMenu();
+                Log.d("TAG", "onDrawerOpened: " + getTitle());
             }
 
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
                 Log.d("TAG", "onDrawerClosed: " + getTitle());
-
-                //invalidateOptionsMenu();
             }
         };
 
         mDrawerLayout.addDrawerListener(mDrawerToggle);
-
     }
 
     /*
-     * Called when a particular item from the navigation drawer
-     * is selected.
-     * */
+     * lorsqu'un élément particulier du tiroir de navigation est sélectionné
+     */
     private void selectItemFromDrawer(int position) {
         // TODO faire des conditions pr chaque page/menu avec position 0,1,2
-        Intent intent = new Intent(HomeActivity.this, ProfilActivity.class);
-        startActivity(intent);
 
+        //Intent intent = new Intent(HomeActivity.this, ProfilActivity.class);
+        //startActivity(intent);
 
         mDrawerList.setItemChecked(position, true);
         setTitle(mNavItems.get(position).mTitle);
 
-        // Close the drawer
+        // Fermer le menu
         mDrawerLayout.closeDrawer(mDrawerPane);
     }
 
+    /*
+    * Inner class:
+     */
     class DrawerListAdapter extends BaseAdapter {
 
         Context mContext;
@@ -150,14 +148,14 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Pass the event to ActionBarDrawerToggle
-        // If it returns true, then it has handled
-        // the nav drawer indicator touch event
+        // Transmettre l'événement à ActionBarDrawerToggle
+        // S'il retourne vrai, alors il a manipulé
+        // l'événement tactile de l'indicateur de tiroir de nav
         if (mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
 
-        // Handle your other action bar items...
+        // Gère tes autres éléments de la barre d'action ...
 
         return super.onOptionsItemSelected(item);
     }

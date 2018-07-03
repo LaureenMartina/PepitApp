@@ -22,7 +22,8 @@
         <activity android:name=".ConnexionActivity" />
         <activity android:name=".SuccessInscriptionActivity" />
         <activity android:name=".HomeActivity" />
-        <activity android:name=".ProfilActivity"></activity>
+        <activity android:name=".ProfilActivity" />
+        <activity android:name=".InfoActivity"></activity>
     </application>
 
 </manifest>
