@@ -6,4 +6,5 @@ public interface InscriptView {
     void failedVerif();
     void failedVerifPassword();
     void validationData(String firstname, String lastname, String username, String password, String confirmPassword, Integer age, String email);
+
 }

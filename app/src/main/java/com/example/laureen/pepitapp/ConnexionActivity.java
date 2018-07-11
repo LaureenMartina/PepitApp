@@ -1,16 +1,16 @@
 package com.example.laureen.pepitapp;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.laureen.pepitapp.model.SaveUserDataPreferences;
 import com.example.laureen.pepitapp.presenter.ConnectPresenter;
-import com.example.laureen.pepitapp.presenter.InscriptPresenter;
 import com.example.laureen.pepitapp.view.ConnectView;
 
 public class ConnexionActivity extends AppCompatActivity implements ConnectView {
@@ -20,6 +20,8 @@ public class ConnexionActivity extends AppCompatActivity implements ConnectView 
 
     EditText username;
     EditText password;
+
+    SaveUserDataPreferences dataUser = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +53,18 @@ public class ConnexionActivity extends AppCompatActivity implements ConnectView 
     }
 
     @Override
-    public void validationData() {
+    public void validationData(String token) {
+        // TODO : enlever le toast
+        // TODO : gestion des errors si pb sur token !
         Toast.makeText(this, "GOOD", Toast.LENGTH_SHORT).show();
+
+        //Créer le fichier spécifique au user
+        String name = username.getText().toString();
+        SaveUserDataPreferences dataUser = new SaveUserDataPreferences(name);
+
+        //Sauvegarder avec SharedPreferences
+        dataUser.setToken(this, token);
+
         Intent intent = new Intent(ConnexionActivity.this, HomeActivity.class);
         startActivity(intent);
     }

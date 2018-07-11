@@ -4,5 +4,5 @@ public interface ConnectView {
 
     public void onClickOnButtonSignIn();
 
-    void validationData();
+    void validationData(String token);
 }

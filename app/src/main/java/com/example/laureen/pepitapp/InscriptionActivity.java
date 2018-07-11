@@ -1,8 +1,13 @@
 package com.example.laureen.pepitapp;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -60,6 +65,24 @@ public class InscriptionActivity extends AppCompatActivity implements InscriptVi
 
         age.setOnValueChangedListener(onValueChangeListener);
 
+        email.addTextChangedListener(new TextWatcher()  {
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s)  {
+                if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()) {
+                    email.setError("Email not correct");
+                }
+            }
+        });
+
 
         btnInscrip.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,9 +128,32 @@ public class InscriptionActivity extends AppCompatActivity implements InscriptVi
         Toast.makeText(this, "Un ou pls champs sont mal rempli", Toast.LENGTH_SHORT).show();
     }
 
-    @Override
     public void failedVerifPassword() {
-        Toast.makeText(this, "Mots de passe non identiques", Toast.LENGTH_SHORT).show();
+        AlertDialog.Builder builder;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Dialog_Alert);
+        } else {
+            builder = new AlertDialog.Builder(this);
+        }
+        builder.setTitle("Error")
+                .setMessage("Mots de passe non identiques")
+                .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                /*.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // continue with delete
+                    }
+                })
+                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // do nothing
+                    }
+                })*/
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
     }
 
     @Override

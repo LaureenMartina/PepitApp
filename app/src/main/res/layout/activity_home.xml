@@ -1,23 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".HomeActivity">
-
-    <android.support.v4.widget.DrawerLayout
-        android:id="@+id/drawerLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="0dp">
-
-        <!-- The main content view -->
-        <RelativeLayout
-            android:id="@+id/mainContent"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/imgGamer"
@@ -81,13 +66,6 @@
                 android:layout_marginTop="330dp"
                 android:text="0"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="330dp"
-                android:text="/100%"/>
-
             <ImageView
                 android:id="@+id/imgAdventure"
                 android:layout_width="90dp"
@@ -105,13 +83,6 @@
                 android:layout_marginTop="330dp"
                 android:text="0"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="190dp"
-                android:layout_marginTop="330dp"
-                android:text="/100%"/>
-
             <ImageView
                 android:layout_width="90dp"
                 android:layout_height="90dp"
@@ -127,13 +98,6 @@
                 android:layout_marginLeft="295dp"
                 android:layout_marginTop="330dp"
                 android:text="0"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="310dp"
-                android:layout_marginTop="330dp"
-                android:text="/100%"/>
 
             <ImageView
                 android:id="@+id/imgLanguage"
@@ -163,69 +127,4 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
-
-        </RelativeLayout>
-
-        <!-- The navigation drawer -->
-        <RelativeLayout
-            android:id="@+id/drawerPane"
-            android:layout_width="280dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="start">
-
-            <!-- Profile Box  -->
-
-            <!-- <RelativeLayout
-                android:id="@+id/profileBox"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:background="@color/material_blue_grey_800"
-                android:padding="8dp" >
-
-                <ImageView
-                    android:id="@+id/avatar"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/ic_warning"
-                    android:layout_marginTop="15dp" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="42dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="15dp"
-                    android:layout_toRightOf="@+id/avatar"
-                    android:orientation="vertical" >
-
-                    <TextView
-                        android:id="@+id/userName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Rishabh"
-                        android:textColor="#fff"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/desc"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:layout_marginTop="4dp"
-                        android:text="View Profile"
-                        android:textColor="#fff"
-                        android:textSize="12sp" />
-                </LinearLayout>
-            </RelativeLayout>-->
-
-            <!-- List of Actions (pages) -->
-            <ListView
-                android:id="@+id/navList"
-                android:layout_width="280dp"
-                android:layout_height="match_parent"
-                android:background="#ffffffff"
-                android:choiceMode="singleChoice" />
-
-        </RelativeLayout>
-    </android.support.v4.widget.DrawerLayout>
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
