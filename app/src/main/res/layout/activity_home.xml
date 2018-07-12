@@ -19,17 +19,18 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
                 android:layout_toRightOf="@+id/imgGamer"
-                android:text="HOME ACCUEIL USER"
+                android:text="Récapitulatif de l'inscrit"
                 android:textColor="#000"
                 android:textSize="15dp" />
 
             <TextView
+                android:id="@+id/dateInscriptUser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/imgGamer"
                 android:layout_marginLeft="30dp"
                 android:layout_toRightOf="@+id/imgGamer"
-                android:text="Inscrit depuis le 03/07/18" />
+                android:text="date" />
 
             <ImageView
                 android:id="@+id/imgStat"

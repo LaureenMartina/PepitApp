@@ -78,7 +78,25 @@ public class InscriptionActivity extends AppCompatActivity implements InscriptVi
             @Override
             public void afterTextChanged(Editable s)  {
                 if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()) {
-                    email.setError("Email not correct");
+                    email.setError("Email incorrect");
+                }
+            }
+        });
+
+        password.addTextChangedListener(new TextWatcher()  {
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s)  {
+                if ((password.length() < 6) && (password.length() > 10)) {
+                    password.setError("Doit être compris entre 6 à 10 chiffres");
                 }
             }
         });
@@ -125,10 +143,11 @@ public class InscriptionActivity extends AppCompatActivity implements InscriptVi
     @Override
     public void failedVerif() {
         //lastname.setError("Vous devez remplir", drawable);
-        Toast.makeText(this, "Un ou pls champs sont mal rempli", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Un ou plusieurs champs sont incorrects", Toast.LENGTH_SHORT).show();
     }
 
     public void failedVerifPassword() {
+        //POPUP
         AlertDialog.Builder builder;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Dialog_Alert);

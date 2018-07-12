@@ -99,18 +99,24 @@ public class MenuActivity extends AppCompatActivity {
 
         switch (position){
             case MENU0:
-                //intent = new Intent(MenuActivity.this, ProfilActivity.class);
-                //startActivity(intent);
+                intent = new Intent(MenuActivity.this, ProfilUserActivity.class);
+                startActivity(intent);
                 break;
             case MENU1:
                 intent = new Intent(MenuActivity.this, InformationActivity.class);
                 startActivity(intent);
                 break;
             case MENU2:
+                intent = new Intent(MenuActivity.this, GameActivity.class);
+                startActivity(intent);
                 break;
             case MENU3:
+                //intent = new Intent(MenuActivity.this, InformationActivity.class);
+                //startActivity(intent);
                 break;
             case MENU4:
+                //intent = new Intent(MenuActivity.this, InformationActivity.class);
+                //startActivity(intent);
                 break;
             default:
                 break;

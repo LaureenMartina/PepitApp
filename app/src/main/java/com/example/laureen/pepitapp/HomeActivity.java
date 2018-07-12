@@ -19,8 +19,16 @@ public class HomeActivity extends MenuActivity {
             homeView = inflater.inflate(R.layout.activity_home, null);
         content.addView(homeView);
 
-        TextView pourCentTextView = (TextView) findViewById(R.id.pourcent);
-        pourCentTextView.setText(this.getString(R.string.pourcentString, 67));
+        // Modifier les pourcentages de jeux effectués
+        TextView pourcentTextView = (TextView) findViewById(R.id.pourcent);
+        pourcentTextView.setText(this.getString(R.string.pourcentString, 67));
+
+        TextView pourcent2TextView = (TextView) findViewById(R.id.pourcent2);
+        pourcent2TextView.setText(this.getString(R.string.pourcent2String, 10));
+
+        TextView pourcent3TextView = (TextView) findViewById(R.id.pourcent3);
+        pourcent3TextView.setText(this.getString(R.string.pourcent3String, 0));
+
     }
 
 }
