@@ -26,4 +26,5 @@ public class User {
         this.profil = profil;
         this.type = type;
     }
+
 }
