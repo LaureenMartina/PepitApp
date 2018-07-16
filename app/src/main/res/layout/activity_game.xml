@@ -1,9 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".GameActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/titleGames"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Espace Jeux"
+        android:textStyle="bold"
+        android:textColor="#FE5303"
+        android:textSize="25dp"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        />
+
+    <ImageView
+        android:id="@+id/btn_gameQuizz"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/quizz"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/titleGames"
+        android:layout_marginTop="18dp"
+        />
+
+    <TextView
+        android:id="@+id/titleQuizz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pépit'Quizz"
+        android:textSize="20dp"
+        android:textColor="#000"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/btn_gameQuizz"
+        android:textAlignment="center"
+        />
+
+    <ImageView
+        android:id="@+id/btn_gameSombrero"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/casse_sombrero"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/titleQuizz"
+        android:layout_marginTop="18dp"
+        />
+
+    <TextView
+        android:id="@+id/titleSombrero"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Casse Sombrero"
+        android:textSize="20dp"
+        android:textColor="#000"
+        android:layout_marginTop="5dp"
+        android:textAlignment="center"
+        android:layout_below="@+id/btn_gameSombrero"
+        />
+
+    <ImageView
+        android:id="@+id/btn_gameAdventure"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/run_aventure"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/titleSombrero"
+        android:layout_marginTop="18dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pépit'AdventureTime"
+        android:textSize="20dp"
+        android:textColor="#000"
+        android:layout_marginTop="5dp"
+        android:textAlignment="center"
+        android:layout_below="@+id/btn_gameAdventure"/>
+
+</RelativeLayout>

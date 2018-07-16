@@ -48,10 +48,10 @@ public class MenuActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mNavItems.add(new NavItem("Profil", "votre compte personnel", R.drawable.ic_user));
+        mNavItems.add(new NavItem("Home", "votre compte personnel", R.drawable.ic_user));
         mNavItems.add(new NavItem("Informations", "informations générales", R.drawable.ic_info));
         mNavItems.add(new NavItem("Espace Jeux", "apprenez en jouant", R.drawable.ic_cible));
-        mNavItems.add(new NavItem("Preferences", "modifier vos paramètres", R.drawable.ic_params));
+        mNavItems.add(new NavItem("Cours", "Apprenez plus en profondeur", R.drawable.ic_params));
         mNavItems.add(new NavItem("Liker", "noter notre application", R.drawable.ic_rate));
         mNavItems.add(new NavItem("Déconnexion", "quittez", R.drawable.ic_power_off));
 
@@ -99,7 +99,7 @@ public class MenuActivity extends AppCompatActivity {
 
         switch (position){
             case MENU0:
-                intent = new Intent(MenuActivity.this, ProfilUserActivity.class);
+                intent = new Intent(MenuActivity.this, HomeActivity.class);
                 startActivity(intent);
                 break;
             case MENU1:
@@ -111,11 +111,11 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case MENU3:
-                //intent = new Intent(MenuActivity.this, InformationActivity.class);
+                //intent = new Intent(MenuActivity.this, LessonActivity.class);
                 //startActivity(intent);
                 break;
             case MENU4:
-                //intent = new Intent(MenuActivity.this, InformationActivity.class);
+                //intent = new Intent(MenuActivity.this, RateActivity.class);
                 //startActivity(intent);
                 break;
             default:

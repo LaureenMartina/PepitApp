@@ -14,8 +14,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_bar_chart" />
-                            <entry key="sourceFile" value="D:\Android\AndroidProjects\PepitApp\app\src\main\res\drawable\bar-chart.svg" />
+                            <entry key="outputName" value="ic_gamer" />
+                            <entry key="sourceFile" value="D:\Android\AndroidProjects\PepitApp\app\src\main\res\drawable\gamepad.svg" />
                           </map>
                         </option>
                       </PersistentState>

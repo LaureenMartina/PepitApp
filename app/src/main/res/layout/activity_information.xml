@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,11 +7,40 @@
     tools:context=".InformationActivity">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/title"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Informations Générales"
         android:textStyle="bold"
+        android:textColor="#FE5303"
+        android:textSize="25dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"/>
+    
+    <TextView
+        android:id="@+id/descriptif"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/title"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:textSize="15dp"
         android:textColor="#000"
-        android:textSize="30dp"/>
+        android:text="\t\tCher Joueur, nous avons le plaisir de vous présenter notre première application Pepit'CodingGame !\n\n\t\tVous aurez accès à divers jeux ainsi qu'aux cours afin de vous introduire plus en profondeur quelques notions sur certains langages.\n\n\t\tLe but de notre application est d'acquérir des notions ou de confirmer simplement vos acquis suivant une méthode ludique basée sur des jeux évolutifs !\n\n\t\tAlors pas une minute à perdre et commencer l'aventure avec Pepit'CodingGame !!!"
+        />
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="L'équipe Pepit'CodingGame"
+        android:textStyle="italic"
+        android:textColor="#FE5303"
+        android:textSize="15dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/descriptif"
+        android:layout_marginTop="45dp"
+        />
+
+</RelativeLayout>

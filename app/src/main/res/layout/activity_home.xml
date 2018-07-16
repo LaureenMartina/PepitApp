@@ -1,131 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/imgGamer"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/ic_user" />
+        <ImageView
+            android:id="@+id/imgGamer"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_user" />
 
-            <TextView
-                android:id="@+id/nameGamer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="20dp"
-                android:layout_toRightOf="@+id/imgGamer"
-                android:text="Récapitulatif de l'inscrit"
-                android:textColor="#000"
-                android:textSize="15dp" />
+        <TextView
+            android:id="@+id/nameGamer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/imgGamer"
+            android:text="Récapitulatif de l'inscrit"
+            android:textColor="#000"
+            android:textSize="15dp" />
 
-            <TextView
-                android:id="@+id/dateInscriptUser"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/imgGamer"
-                android:layout_marginLeft="30dp"
-                android:layout_toRightOf="@+id/imgGamer"
-                android:text="date" />
+        <TextView
+            android:id="@+id/dateInscriptUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/imgGamer"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@+id/imgGamer"
+            android:text="date" />
 
-            <ImageView
-                android:id="@+id/imgStat"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="140dp"
-                android:src="@drawable/ic_bar_chart" />
+        <ImageView
+            android:id="@+id/imgStat"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="140dp"
+            android:src="@drawable/ic_bar_chart" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="155dp"
-                android:layout_toRightOf="@+id/imgStat"
-                android:text="Statistiques"
-                android:textColor="#000"
-                android:textSize="15dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="155dp"
+            android:layout_toRightOf="@+id/imgStat"
+            android:text="Statistiques"
+            android:textColor="#000"
+            android:textSize="15dp" />
 
-            <ImageView
-                android:id="@+id/imgQuizz"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="230dp"
-                android:src="@drawable/quizz"
-                />
+        <ImageView
+            android:id="@+id/imgQuizz"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="230dp"
+            android:src="@drawable/quizz"
+            />
 
-            <TextView
-                android:id="@+id/pourcent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="330dp"
-                android:text="0"/>
+        <TextView
+            android:id="@+id/pourcent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="330dp"
+            android:text="0"/>
 
-            <ImageView
-                android:id="@+id/imgAdventure"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                android:layout_alignTop="@+id/imgQuizz"
-                android:layout_toRightOf="@+id/imgQuizz"
-                android:layout_marginLeft="30dp"
-                android:src="@drawable/run_aventure"/>
+        <ImageView
+            android:id="@+id/imgAdventure"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_alignTop="@+id/imgQuizz"
+            android:layout_toRightOf="@+id/imgQuizz"
+            android:layout_marginLeft="30dp"
+            android:src="@drawable/run_aventure"/>
 
-            <TextView
-                android:id="@+id/pourcent2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="180dp"
-                android:layout_marginTop="330dp"
-                android:text="0"/>
+        <TextView
+            android:id="@+id/pourcent2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="180dp"
+            android:layout_marginTop="330dp"
+            android:text="0"/>
 
-            <ImageView
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                android:layout_alignTop="@+id/imgAdventure"
-                android:layout_toRightOf="@+id/imgAdventure"
-                android:layout_marginLeft="30dp"
-                android:src="@drawable/casse_sombrero"/>
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_alignTop="@+id/imgAdventure"
+            android:layout_toRightOf="@+id/imgAdventure"
+            android:layout_marginLeft="30dp"
+            android:src="@drawable/casse_sombrero"/>
 
-            <TextView
-                android:id="@+id/pourcent3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="295dp"
-                android:layout_marginTop="330dp"
-                android:text="0"/>
+        <TextView
+            android:id="@+id/pourcent3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="295dp"
+            android:layout_marginTop="330dp"
+            android:text="0"/>
 
-            <ImageView
-                android:id="@+id/imgLanguage"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="380dp"
-                android:src="@drawable/ic_bar_chart" />
+        <ImageView
+            android:id="@+id/imgLanguage"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="380dp"
+            android:src="@drawable/ic_bar_chart" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="400dp"
-                android:layout_toRightOf="@+id/imgLanguage"
-                android:text="Langue choisie"
-                android:textColor="#000"
-                android:textSize="15dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="400dp"
+            android:layout_toRightOf="@+id/imgLanguage"
+            android:text="Langage sélectionné"
+            android:textColor="#000"
+            android:textSize="15dp" />
 
-            <Switch
-                android:id="@+id/switchFr"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+        <Switch
+            android:id="@+id/switchFr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-            <Switch
-                android:id="@+id/switchGb"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+        <Switch
+            android:id="@+id/switchGb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
 </RelativeLayout>
