@@ -14,6 +14,21 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <android.support.constraint.Guideline
+                android:id="@+id/guideLine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.50"/>
+
+            <ProgressBar
+                android:id="@+id/login_progress"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="100"
+                android:progress="0"/>
+
             <TextView
                 android:id="@+id/info"
                 android:layout_width="match_parent"
@@ -23,16 +38,8 @@
                 android:textColor="#FE5303"
                 android:textSize="25dp"
                 android:textStyle="bold"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="20dp"
+                app:layout_constraintTop_toBottomOf="@+id/login_progress"
                 />
-
-            <android.support.constraint.Guideline
-                android:id="@+id/guideLine"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.50" />
 
             <EditText
                 android:id="@+id/username"
@@ -127,14 +134,6 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_marginTop="20dp"
                 />
-
-            <ProgressBar
-                android:id="@+id/login_progress"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:max="100"
-                android:progress="0"/>
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
