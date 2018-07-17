@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LessonActivity">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cours disponibles"
+        android:textSize="20dp"
+        android:textColor="#FE5303"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:layout_marginTop="25dp"
+        android:textStyle="bold"
+        />
+
+    <Button
+        android:id="@+id/learnLinux"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/title"
+        android:layout_marginTop="20dp"
+        android:text="LINUX"
+        />
+
+    <Button
+        android:id="@+id/learnJs"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/learnLinux"
+        android:layout_marginTop="20dp"
+        android:text="JAVASCRIPT"
+        />
+
+    <Button
+        android:id="@+id/learnPython"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/learnJs"
+        android:layout_marginTop="20dp"
+        android:text="PYTHON"
+        />
+
+    <Button
+        android:id="@+id/learnC"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/learnPython"
+        android:layout_marginTop="20dp"
+        android:text="LANGAGE C"
+        />
+
+</RelativeLayout>

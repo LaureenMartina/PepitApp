@@ -9,7 +9,7 @@
             android:layout_height="50dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
-            android:src="@drawable/ic_user" />
+            android:src="@drawable/ic_user"/>
 
         <TextView
             android:id="@+id/nameGamer"
@@ -18,7 +18,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
             android:layout_toRightOf="@+id/imgGamer"
-            android:text="Récapitulatif de l'inscrit"
+            android:text="Username ou Email"
             android:textColor="#000"
             android:textSize="15dp" />
 
@@ -29,7 +29,7 @@
             android:layout_alignBottom="@+id/imgGamer"
             android:layout_marginLeft="30dp"
             android:layout_toRightOf="@+id/imgGamer"
-            android:text="date" />
+            android:text="date d'inscription"/>
 
         <ImageView
             android:id="@+id/imgStat"
@@ -45,7 +45,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="155dp"
             android:layout_toRightOf="@+id/imgStat"
-            android:text="Statistiques"
+            android:text="STATISTIQUES"
             android:textColor="#000"
             android:textSize="15dp" />
 
@@ -53,9 +53,10 @@
             android:id="@+id/imgQuizz"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="230dp"
             android:src="@drawable/quizz"
+            android:layout_marginTop="230dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="25dp"
             />
 
         <TextView
@@ -63,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
-            android:layout_marginTop="330dp"
+            android:layout_marginTop="320dp"
             android:text="0"/>
 
         <ImageView
@@ -73,14 +74,15 @@
             android:layout_alignTop="@+id/imgQuizz"
             android:layout_toRightOf="@+id/imgQuizz"
             android:layout_marginLeft="30dp"
-            android:src="@drawable/run_aventure"/>
+            android:src="@drawable/run_aventure"
+            android:layout_centerVertical="true"/>
 
         <TextView
             android:id="@+id/pourcent2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="180dp"
-            android:layout_marginTop="330dp"
+            android:layout_marginTop="320dp"
             android:text="0"/>
 
         <ImageView
@@ -96,7 +98,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="295dp"
-            android:layout_marginTop="330dp"
+            android:layout_marginTop="320dp"
             android:text="0"/>
 
         <ImageView
@@ -105,7 +107,7 @@
             android:layout_height="50dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="380dp"
-            android:src="@drawable/ic_bar_chart" />
+            android:src="@drawable/ic_translate" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -119,12 +121,22 @@
 
         <Switch
             android:id="@+id/switchFr"
+            android:text="Français   "
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_below="@+id/imgLanguage"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="70dp"/>
 
         <Switch
             android:id="@+id/switchGb"
+            android:text="Anglais   "
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_below="@+id/imgLanguage"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="200dp"/>
 
 </RelativeLayout>

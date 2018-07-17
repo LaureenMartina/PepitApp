@@ -77,9 +77,9 @@ public class InscriptionActivity extends AppCompatActivity implements InscriptVi
 
             @Override
             public void afterTextChanged(Editable s)  {
-                if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()) {
+                //if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()) {
                     email.setError("Email incorrect");
-                }
+                //}
             }
         });
 
@@ -97,6 +97,24 @@ public class InscriptionActivity extends AppCompatActivity implements InscriptVi
             public void afterTextChanged(Editable s)  {
                 if ((password.length() < 6) && (password.length() > 10)) {
                     password.setError("Doit être compris entre 6 à 10 chiffres");
+                }
+            }
+        });
+
+        confirmPassword.addTextChangedListener(new TextWatcher()  {
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s)  {
+                if (confirmPassword.length() != password.length()) {
+                    confirmPassword.setError("Taille de la confirmation incorrect");
                 }
             }
         });
@@ -129,8 +147,7 @@ public class InscriptionActivity extends AppCompatActivity implements InscriptVi
     public void showProgressBar(){
         //affichage de la progessbar animation
         ProgressBar progressBar = findViewById(R.id.login_progress);
-        //progressBar.setVisibility(View.VISIBLE);
-        progressBar.setProgress(50);
+        progressBar.setProgress(100);
     }
 
     NumberPicker.OnValueChangeListener onValueChangeListener = new NumberPicker.OnValueChangeListener(){
@@ -142,8 +159,7 @@ public class InscriptionActivity extends AppCompatActivity implements InscriptVi
 
     @Override
     public void failedVerif() {
-        //lastname.setError("Vous devez remplir", drawable);
-        Toast.makeText(this, "Un ou plusieurs champs sont incorrects", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Un ou plusieurs champs sont vides", Toast.LENGTH_SHORT).show();
     }
 
     public void failedVerifPassword() {
@@ -161,23 +177,33 @@ public class InscriptionActivity extends AppCompatActivity implements InscriptVi
                         dialog.dismiss();
                     }
                 })
-                /*.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+    }
+
+    public void popupValidationInscription() {
+
+        AlertDialog.Builder builder;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Dialog_Alert);
+        } else {
+            builder = new AlertDialog.Builder(this);
+        }
+        builder.setTitle("BRAVO !")
+                .setMessage("Vous êtes désormais inscrit !")
+                .setPositiveButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        // continue with delete
+                        dialog.dismiss();
                     }
                 })
-                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // do nothing
-                    }
-                })*/
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .show();
     }
 
     @Override
-    public void validationData(String firstname, String lastname, String username, String password, String confirmPassword, Integer age, String email) {
-        Toast.makeText(this, "GOOD", Toast.LENGTH_SHORT).show();
+    public void validationData(String token) {
+        //Toast.makeText(this, "GOOD", Toast.LENGTH_SHORT).show();
         showProgressBar();
+        popupValidationInscription();
     }
 }

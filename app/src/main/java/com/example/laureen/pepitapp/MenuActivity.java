@@ -51,7 +51,7 @@ public class MenuActivity extends AppCompatActivity {
         mNavItems.add(new NavItem("Home", "votre compte personnel", R.drawable.ic_user));
         mNavItems.add(new NavItem("Informations", "informations générales", R.drawable.ic_info));
         mNavItems.add(new NavItem("Espace Jeux", "apprenez en jouant", R.drawable.ic_cible));
-        mNavItems.add(new NavItem("Cours", "Apprenez plus en profondeur", R.drawable.ic_params));
+        mNavItems.add(new NavItem("Cours", "Apprenez plus en profondeur", R.drawable.ic_book));
         mNavItems.add(new NavItem("Liker", "noter notre application", R.drawable.ic_rate));
         mNavItems.add(new NavItem("Déconnexion", "quittez", R.drawable.ic_power_off));
 
@@ -111,8 +111,8 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case MENU3:
-                //intent = new Intent(MenuActivity.this, LessonActivity.class);
-                //startActivity(intent);
+                intent = new Intent(MenuActivity.this, LessonActivity.class);
+                startActivity(intent);
                 break;
             case MENU4:
                 //intent = new Intent(MenuActivity.this, RateActivity.class);
