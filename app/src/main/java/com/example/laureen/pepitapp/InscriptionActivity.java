@@ -2,6 +2,7 @@ package com.example.laureen.pepitapp;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -77,9 +78,9 @@ public class InscriptionActivity extends AppCompatActivity implements InscriptVi
 
             @Override
             public void afterTextChanged(Editable s)  {
-                //if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()) {
+                if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email.getText()).matches()) {
                     email.setError("Email incorrect");
-                //}
+                }
             }
         });
 
@@ -191,9 +192,11 @@ public class InscriptionActivity extends AppCompatActivity implements InscriptVi
         }
         builder.setTitle("BRAVO !")
                 .setMessage("Vous êtes désormais inscrit !")
-                .setPositiveButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
+                        Intent intent = new Intent(InscriptionActivity.this, ConnexionActivity.class);
+                        startActivity(intent);
                     }
                 })
                 .setIcon(android.R.drawable.ic_dialog_alert)
