@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -70,6 +72,17 @@ public class QuizzActivity extends AppCompatActivity implements QuizzView {
 
         presenter = new QuizzPresenter((QuizzView) this);
         presenter.questionQuizz(this);
+
+        Button buttonAnswerQuizz = findViewById(R.id.btn_answer_quizz);
+
+        buttonAnswerQuizz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("in btn check answer", "");
+                checkAnswerQuizz();
+            }
+        });
+
     }
 
 
@@ -82,6 +95,10 @@ public class QuizzActivity extends AppCompatActivity implements QuizzView {
         questionsList.addAll(questionApi);
         incorrectAnswer.addAll(incorrectAnswerApi);
         correctAnswer.addAll(correctAnswerApi);
+        Log.e("list question", questionsList.toString());
+        Log.e("list reponse", incorrectAnswer.toString());
+        Log.e("list bonne reponse", correctAnswer.toString());
+
         nextQuestion();
     }
 
@@ -90,9 +107,13 @@ public class QuizzActivity extends AppCompatActivity implements QuizzView {
 
     public void nextQuestion(){
         Log.d(TAG, "question : " + questionsList.get(cptQuestion));
-        Log.d(TAG, "question : " + incorrectAnswer.get(cptQuestion).get(0));
-        questionQuizz.setText(questionsList.toString());
-        //questionQuizz.setText(questionsList.get(cptQuestion).toString());
+        Log.d(TAG, "reponses 1 : " + incorrectAnswer.get(cptQuestion).get(0));
+        Log.d(TAG, "reponses 2 : " + incorrectAnswer.get(cptQuestion).get(1));
+        Log.d(TAG, "reponses 3 : " + incorrectAnswer.get(cptQuestion).get(2));
+        Log.d(TAG, "reponses 4 : " + incorrectAnswer.get(cptQuestion).get(3));
+        Log.d(TAG, "bonne reponses : " + correctAnswer.get(cptQuestion));
+
+        questionQuizz.setText(questionsList.get(cptQuestion));
         answer1.setText(incorrectAnswer.get(cptQuestion).get(0));
         answer2.setText(incorrectAnswer.get(cptQuestion).get(1));
         answer3.setText(incorrectAnswer.get(cptQuestion).get(2));
@@ -105,9 +126,10 @@ public class QuizzActivity extends AppCompatActivity implements QuizzView {
     }
 */
 
-    @OnClick(R.id.button_answer)
-    public void checkAnswer(){
 
+
+
+    public void checkAnswerQuizz(){
         Log.e("cptQuestion", String.valueOf(cptQuestion));
         if(cptQuestion == NUMBER_QUESTIONS_QUIZZ-1){
             endOfQuizz();
@@ -116,7 +138,8 @@ public class QuizzActivity extends AppCompatActivity implements QuizzView {
         int idRadioButtonChecked = rg.getCheckedRadioButtonId();
         RadioButton radioButton = findViewById(idRadioButtonChecked);
         Log.e("response", radioButton.getText().toString());
-        if(radioButton.getText().toString() == correctAnswer.get(cptQuestion)){
+        Log.e("correct response", correctAnswer.get(cptQuestion));
+        if(radioButton.getText().toString().equals(correctAnswer.get(cptQuestion))){
             score += 1;
             xp += 150;
             Toast.makeText(this, "Bonne reponse", Toast.LENGTH_SHORT).show();
@@ -125,6 +148,9 @@ public class QuizzActivity extends AppCompatActivity implements QuizzView {
             Toast.makeText(this, "Mauvaise reponse", Toast.LENGTH_SHORT).show();
         }
         score_player.setText(String.valueOf(score) + "/10");
+
+
+        Log.e("in btn check answer", "");
         cptQuestion += 1;
         nextQuestion();
 
