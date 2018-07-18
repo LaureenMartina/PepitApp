@@ -3,6 +3,7 @@ package com.example.laureen.pepitapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -61,6 +62,7 @@ public class ConnexionActivity extends AppCompatActivity implements ConnectView 
         //Créer le fichier spécifique au user
         String name = username.getText().toString();
         SaveUserDataPreferences dataUser = new SaveUserDataPreferences(name);
+        Log.i("name", name);
 
         //Sauvegarder avec SharedPreferences
         dataUser.setToken(this, token);

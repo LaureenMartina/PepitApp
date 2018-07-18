@@ -84,4 +84,6 @@
         android:textAlignment="center"
         android:layout_below="@+id/btn_gameAdventure"/>
 
+
+
 </RelativeLayout>

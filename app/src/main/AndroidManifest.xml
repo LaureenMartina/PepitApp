@@ -26,7 +26,9 @@
         <activity android:name=".InfoActivity" />
         <activity android:name=".InformationActivity" />
         <activity android:name=".ProfilUserActivity" />
-        <activity android:name=".GameActivity"></activity>
+        <activity android:name=".GameActivity" />
+        <activity android:name=".QuizzActivity" />
+        <activity android:name=".ResultQuizzActivity"></activity>
     </application>
 
 </manifest>
