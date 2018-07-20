@@ -39,7 +39,6 @@ public class GameActivity extends MenuActivity {
         btnQuizz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("Quizz imv click", null);
                 Intent intent = new Intent(getApplicationContext(), QuizzActivity.class);
                 startActivity(intent);
 
@@ -49,7 +48,7 @@ public class GameActivity extends MenuActivity {
         btnSombrero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("Sombrero imv click", null);
+                Log.i("Sombrero imv click", " ");
             }
         });
 

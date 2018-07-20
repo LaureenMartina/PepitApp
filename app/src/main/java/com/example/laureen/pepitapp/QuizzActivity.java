@@ -29,6 +29,7 @@ public class QuizzActivity extends AppCompatActivity implements QuizzView {
     private List<String> questionsList = new ArrayList<>();
     private List<List<String>> incorrectAnswer = new ArrayList<>();
     private List<String> correctAnswer = new ArrayList<>();
+    private ArrayList<Integer> idLevels = new ArrayList<>();
     private RadioGroup rg;
 
 
@@ -38,6 +39,8 @@ public class QuizzActivity extends AppCompatActivity implements QuizzView {
     private int NUMBER_QUESTIONS_QUIZZ = 9;
     private int LIMIT_SCORE_FOR_BONUS = 7;
     private int LIMIT_TIME_FOR_BONUS = 60;
+    private int ID_TEST_EVALUATE_USER_LEVEL = 1;
+    private int ID_NORMAL_TEST = 0;
 
     private float BONUS_XP_TIME = 200;
     private float BONUS_XP_PERFECT = 350;
@@ -71,7 +74,10 @@ public class QuizzActivity extends AppCompatActivity implements QuizzView {
         timeStartQuizz = System.currentTimeMillis();
 
         presenter = new QuizzPresenter((QuizzView) this);
-        presenter.questionQuizz(this);
+        //add presenter to get profil and get exp
+        // add clause to know if exp is null
+
+        presenter.questionQuizz(this, ID_NORMAL_TEST);
 
         Button buttonAnswerQuizz = findViewById(R.id.btn_answer_quizz);
 
@@ -87,7 +93,7 @@ public class QuizzActivity extends AppCompatActivity implements QuizzView {
 
 
     @Override
-    public void getQuizz(List<String> questionApi, List<List<String>> incorrectAnswerApi, List<String> correctAnswerApi) {
+    public void getQuizz(List<String> questionApi, List<List<String>> incorrectAnswerApi, List<String> correctAnswerApi, ArrayList<Integer> idLevelsList) {
         Log.e("in getQuizz", "test");
         questionsList.clear();
         incorrectAnswer.clear();
@@ -95,9 +101,11 @@ public class QuizzActivity extends AppCompatActivity implements QuizzView {
         questionsList.addAll(questionApi);
         incorrectAnswer.addAll(incorrectAnswerApi);
         correctAnswer.addAll(correctAnswerApi);
+        idLevels.addAll(idLevelsList);
         Log.e("list question", questionsList.toString());
         Log.e("list reponse", incorrectAnswer.toString());
         Log.e("list bonne reponse", correctAnswer.toString());
+        Log.e("list id levels", idLevels.toString());
 
         nextQuestion();
     }
@@ -169,12 +177,17 @@ public class QuizzActivity extends AppCompatActivity implements QuizzView {
             xp += BONUS_XP_PERFECT;
         }
 
+        presenter.updateExperience((int) xp, this);
+        presenter.updateHistoric(idLevels, (int) xp, this);
+
+
         Intent intent = new Intent(this, ResultQuizzActivity.class);
         intent.putExtra("score", String.valueOf(score));
 
         startActivity(intent);
 
     }
+
 
 
 }

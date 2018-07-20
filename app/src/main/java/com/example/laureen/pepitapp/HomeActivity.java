@@ -13,7 +13,6 @@ public class HomeActivity extends MenuActivity {
 
     View homeView;
 
-    Button buttonGoQuizz;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +23,6 @@ public class HomeActivity extends MenuActivity {
         homeView = inflater.inflate(R.layout.activity_home, null);
         content.addView(homeView);
 
-        buttonGoQuizz = findViewById(R.id.btn_go_quizz);
 
         // Modifier les pourcentages de jeux effectués
         TextView pourcentTextView = (TextView) findViewById(R.id.pourcent);
@@ -37,14 +35,7 @@ public class HomeActivity extends MenuActivity {
         //pourcent3TextView.setText(this.getString(R.string.pourcent3String, 0));
 
 
-        buttonGoQuizz.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                Intent intent = new Intent(getApplicationContext(), QuizzActivity.class);
-                startActivity(intent);
-            }
-        });
 
     }
 

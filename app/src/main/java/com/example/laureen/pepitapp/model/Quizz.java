@@ -13,6 +13,9 @@ public class Quizz {
     @SerializedName("id")
     @Expose
     private Integer id;
+    @SerializedName("id_levels")
+    @Expose
+    private Integer idLevels;
     @SerializedName("question")
     @Expose
     private String question;
@@ -44,6 +47,14 @@ public class Quizz {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getIdLevels() {
+        return idLevels;
+    }
+
+    public void setIdLevels(Integer idLevels) {
+        this.idLevels = idLevels;
     }
 
     public String getQuestion() {
@@ -110,10 +121,12 @@ public class Quizz {
         this.evaluateLvlPlayer = evaluateLvlPlayer;
     }
 
+
     @Override
     public String toString() {
         return "Quizz{" +
                 "id=" + id +
+                ", idLevels=" + idLevels +
                 ", question='" + question + '\'' +
                 ", answer1='" + answer1 + '\'' +
                 ", answer2='" + answer2 + '\'' +
