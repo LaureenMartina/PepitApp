@@ -22,10 +22,7 @@
         <activity android:name=".ConnexionActivity" />
         <activity android:name=".SuccessInscriptionActivity" />
         <activity android:name=".HomeActivity" />
-        <activity android:name=".ProfilActivity" />
-        <activity android:name=".InfoActivity" />
         <activity android:name=".InformationActivity" />
-        <activity android:name=".ProfilUserActivity" />
         <activity android:name=".GameActivity" />
         <activity android:name=".LessonActivity"></activity>
     </application>
