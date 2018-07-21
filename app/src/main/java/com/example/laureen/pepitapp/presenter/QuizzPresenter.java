@@ -31,7 +31,7 @@ import java.util.List;
 public class QuizzPresenter {
     private static final String TAG = "QuizzPresenter";
 
-    @NonNull
+
     private QuizzView QuizzView;
 
     private List<String> questionsList = new ArrayList<>();
@@ -39,21 +39,19 @@ public class QuizzPresenter {
     private List<String> correctAnswer = new ArrayList<>();
     private ArrayList<Integer> idLevelsList = new ArrayList<>();
 
-    public QuizzPresenter(@NonNull QuizzView view){
+    public QuizzPresenter(QuizzView view){
 
         QuizzView = view;
     }
 
-    public void questionQuizz(Context context, int isEvaluatePlayer){
+    public void questionQuizz(Context context){
         Log.e("in question quizz", getClass().toString());
-        SaveUserDataPreferences dataUser = new SaveUserDataPreferences("flowpsouille");
-        String token = dataUser.getToken(context);
+        String token = SaveUserDataPreferences.getToken(context);
         String baseUrl = "http://10.0.2.2:3000/";
 
 
         AndroidNetworking.get(baseUrl+"level_quiz/questions_quiz")
                 .addHeaders("AUTHORIZATION", token)
-                .addQueryParameter("evaluate_lvl_player", String.valueOf(isEvaluatePlayer))
                 .setTag("Connect")
                 .build()
                 .getAsJSONArray(new JSONArrayRequestListener() {

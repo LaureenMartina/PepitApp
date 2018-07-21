@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.laureen.pepitapp.model.Quizz;
 import com.example.laureen.pepitapp.presenter.QuizzPresenter;
+import com.example.laureen.pepitapp.view.ProfilUserView;
 import com.example.laureen.pepitapp.view.QuizzView;
 
 import java.util.ArrayList;
@@ -22,9 +23,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class QuizzActivity extends AppCompatActivity implements QuizzView {
+public class QuizzActivity extends AppCompatActivity implements QuizzView, ProfilUserView {
     private static final String TAG = "QuizzActivity";
-    private QuizzPresenter presenter;
+    private QuizzPresenter quizzPresenter;
     private List<Quizz> quizzList = new ArrayList<>();
     private List<String> questionsList = new ArrayList<>();
     private List<List<String>> incorrectAnswer = new ArrayList<>();
@@ -73,11 +74,11 @@ public class QuizzActivity extends AppCompatActivity implements QuizzView {
 
         timeStartQuizz = System.currentTimeMillis();
 
-        presenter = new QuizzPresenter((QuizzView) this);
+        quizzPresenter = new QuizzPresenter((QuizzView) this);
         //add presenter to get profil and get exp
         // add clause to know if exp is null
 
-        presenter.questionQuizz(this, ID_NORMAL_TEST);
+        quizzPresenter.questionQuizz(this);
 
         Button buttonAnswerQuizz = findViewById(R.id.btn_answer_quizz);
 
@@ -177,8 +178,8 @@ public class QuizzActivity extends AppCompatActivity implements QuizzView {
             xp += BONUS_XP_PERFECT;
         }
 
-        presenter.updateExperience((int) xp, this);
-        presenter.updateHistoric(idLevels, (int) xp, this);
+        quizzPresenter.updateExperience((int) xp, this);
+        quizzPresenter.updateHistoric(idLevels, (int) xp, this);
 
 
         Intent intent = new Intent(this, ResultQuizzActivity.class);
@@ -189,5 +190,13 @@ public class QuizzActivity extends AppCompatActivity implements QuizzView {
     }
 
 
+    @Override
+    public void setExpUser(int exp) {
 
+    }
+
+    @Override
+    public void setProfilIdUser(int profilIdUser) {
+
+    }
 }

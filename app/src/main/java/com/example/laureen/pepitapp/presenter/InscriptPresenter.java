@@ -76,8 +76,8 @@ public class InscriptPresenter {
         list.enqueue(userCallback);*/
 
         //Call<User> createUser = service.createUser(new User("Escape", "game", "fun", "azerty", "azerty", 21, "fun@gmail.com", "ninja", 1));
-        Call<User> createUser = service.createUser(new User(firstname, lastname, username, password, confirmPassword, age, email, "junior", 1));
-        createUser.enqueue(createUserCallback);
+        //Call<User> createUser = service.createUser(new User(firstname, lastname, username, password, confirmPassword, age, email, "junior", 1));
+        //createUser.enqueue(createUserCallback);
     }
 
 }

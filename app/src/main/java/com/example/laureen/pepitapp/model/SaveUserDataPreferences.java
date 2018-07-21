@@ -10,7 +10,7 @@ public class SaveUserDataPreferences {
     private static SharedPreferences prefs;
 
     public SaveUserDataPreferences(String username) {
-        PREF_USERNAME= username;
+        PREF_USERNAME = username;
     }
 
     public static String getToken(Context c) {
