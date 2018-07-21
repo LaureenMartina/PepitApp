@@ -3,7 +3,6 @@ package com.example.laureen.pepitapp;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +13,7 @@ public class HomeActivity extends MenuActivity {
     View homeView;
 
     Button buttonGoQuizz;
+    Button buttonGoSombrero;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +25,7 @@ public class HomeActivity extends MenuActivity {
         content.addView(homeView);
 
         buttonGoQuizz = findViewById(R.id.btn_go_quizz);
+        buttonGoSombrero = findViewById(R.id.btn_go_sombrero);
 
         // Modifier les pourcentages de jeux effectués
         TextView pourcentTextView = (TextView) findViewById(R.id.pourcent);
@@ -42,6 +43,13 @@ public class HomeActivity extends MenuActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(getApplicationContext(), QuizzActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        buttonGoSombrero.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SombreroListActivity.class);
                 startActivity(intent);
             }
         });

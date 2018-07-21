@@ -29,6 +29,9 @@
         <activity android:name=".GameActivity" />
         <activity android:name=".QuizzActivity" />
         <activity android:name=".ResultQuizzActivity"></activity>
+        <activity android:name=".SombreroActivity" />
+        <activity android:name=".SombreroListActivity" />
+        <activity android:name=".SombreroSelectedActivity" />
     </application>
 
 </manifest>

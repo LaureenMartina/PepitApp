@@ -15,6 +15,8 @@
 
     <string name="load_question">Chargement de la question</string>
     <string name="give_score">Votre score est de :</string>
-    <string name="loading_score">Chargement du score...</string>
+    <string name="loading_score">Chargement du score…</string>
     <string name="go_to_menu">Retourner au menu</string>
+    <string name="item">item</string>
+    <string name="sombrero_levels">Casse-Sombrero</string>
 </resources>

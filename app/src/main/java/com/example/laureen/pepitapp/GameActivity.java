@@ -6,13 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-
-import com.example.laureen.pepitapp.model.Quizz;
-
-import butterknife.BindView;
-import butterknife.OnClick;
 
 public class GameActivity extends MenuActivity {
 
@@ -32,7 +26,7 @@ public class GameActivity extends MenuActivity {
         content.addView(homeView);
 
         ImageView btnQuizz = findViewById(R.id.btn_gameQuizz);
-        btnSombrero = (ImageView) findViewById(R.id.btn_gameSombrero);
+        ImageView btnSombrero = findViewById(R.id.btn_gameSombrero);
         btnAdventure = (ImageView) findViewById(R.id.btn_gameAdventure);
 
 
@@ -50,6 +44,8 @@ public class GameActivity extends MenuActivity {
             @Override
             public void onClick(View v) {
                 Log.i("Sombrero imv click", null);
+                Intent intent = new Intent(getApplicationContext(), SombreroListActivity.class);
+                startActivity(intent);
             }
         });
 

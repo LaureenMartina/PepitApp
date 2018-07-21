@@ -133,4 +133,11 @@
             android:layout_height="wrap_content"
             android:text="Test go quizz"/>
 
+        <Button
+            android:id="@+id/btn_go_sombrero"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="200dp"
+            android:text="Test go sombrero"/>
+
 </RelativeLayout>
