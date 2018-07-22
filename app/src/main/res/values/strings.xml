@@ -12,4 +12,5 @@
     <string name="pourcent3String">%1$d fait</string>
 
     <string name="nameUserString">inscrit le %1$s</string>
+    <string name="ratingApp">Note Notre Application !</string>
 </resources>

@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example.laureen.pepitapp.model.SaveUserDataPreferences;
+
 public class GameActivity extends MenuActivity {
 
     View homeView;
@@ -14,6 +16,8 @@ public class GameActivity extends MenuActivity {
     ImageView btnSombrero;
     ImageView btnAdventure;
 
+    private String token;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +25,8 @@ public class GameActivity extends MenuActivity {
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         homeView = inflater.inflate(R.layout.activity_game, null);
         content.addView(homeView);
+
+        token = SaveUserDataPreferences.getToken(this);
 
         btnQuizz = (ImageView) findViewById(R.id.btn_gameQuizz);
         btnSombrero = (ImageView) findViewById(R.id.btn_gameSombrero);
@@ -43,9 +49,17 @@ public class GameActivity extends MenuActivity {
         btnAdventure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                // TEST OPEN UNITY
+                openUnity(token);
             }
         });
 
+    }
+
+    private void openUnity(String parameter) {
+        //Intent intent = new Intent(this, UnityPlayerActivity.class);
+        //intent.putExtra("ParamCallKey", parameter);
+
+        //startActivity(intent);
     }
 }

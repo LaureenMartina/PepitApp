@@ -27,7 +27,8 @@
         <activity android:name=".InformationActivity" />
         <activity android:name=".ProfilUserActivity" />
         <activity android:name=".GameActivity" />
-        <activity android:name=".LessonActivity"></activity>
+        <activity android:name=".LessonActivity" />
+        <activity android:name=".RateActivity"></activity>
     </application>
 
 </manifest>
