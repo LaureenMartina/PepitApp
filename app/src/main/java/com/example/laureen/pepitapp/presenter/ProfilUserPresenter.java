@@ -60,6 +60,8 @@ public class ProfilUserPresenter {
                             profilUserView.setProfilIdUser(Integer.valueOf(user.getId_type_profil()));
                         }
 
+                        profilUserView.setExpUser(user.getExp());
+
 
                     }
                     @Override

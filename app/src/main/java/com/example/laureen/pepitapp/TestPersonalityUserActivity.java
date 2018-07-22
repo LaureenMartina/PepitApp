@@ -1,5 +1,6 @@
 package com.example.laureen.pepitapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -93,6 +94,9 @@ public class TestPersonalityUserActivity extends AppCompatActivity implements Te
             Log.e("idpersonality", String.valueOf(idPersonality));
             testPersonalityUserPresenter.updateTypeProfil(this, idPersonality);
 
+            Intent intent = new Intent(TestPersonalityUserActivity.this, GameActivity.class);
+            startActivity(intent);
+
         }
 
         int idRadioButtonChecked = radio_group_personalityRG.getCheckedRadioButtonId();
@@ -114,7 +118,7 @@ public class TestPersonalityUserActivity extends AppCompatActivity implements Te
 
 
         cptQuestion += 1;
-        if(cptQuestion < arrQuestionsPersonality.size()){
+        if(cptQuestion < arrQuestionsPersonality.size() -1){
             nextQuestion();
         }
 

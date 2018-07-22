@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.laureen.pepitapp.model.Quizz;
+import com.example.laureen.pepitapp.presenter.ProfilUserPresenter;
 import com.example.laureen.pepitapp.presenter.QuizzPresenter;
 import com.example.laureen.pepitapp.view.ProfilUserView;
 import com.example.laureen.pepitapp.view.QuizzView;
@@ -26,6 +27,8 @@ import butterknife.OnClick;
 public class QuizzActivity extends AppCompatActivity implements QuizzView, ProfilUserView {
     private static final String TAG = "QuizzActivity";
     private QuizzPresenter quizzPresenter;
+    private ProfilUserPresenter profilUserPresenter;
+
     private List<Quizz> quizzList = new ArrayList<>();
     private List<String> questionsList = new ArrayList<>();
     private List<List<String>> incorrectAnswer = new ArrayList<>();
@@ -34,6 +37,7 @@ public class QuizzActivity extends AppCompatActivity implements QuizzView, Profi
     private RadioGroup rg;
 
 
+    private int experienceUser = 0;
     private float xp = 0;
     private int score = 0;
     private int cptQuestion = 0;
@@ -75,10 +79,12 @@ public class QuizzActivity extends AppCompatActivity implements QuizzView, Profi
         timeStartQuizz = System.currentTimeMillis();
 
         quizzPresenter = new QuizzPresenter((QuizzView) this);
+        profilUserPresenter = new ProfilUserPresenter((ProfilUserView) this);
         //add presenter to get profil and get exp
         // add clause to know if exp is null
 
         quizzPresenter.questionQuizz(this);
+        profilUserPresenter.getProfilLUser(this);
 
         Button buttonAnswerQuizz = findViewById(R.id.btn_answer_quizz);
 
@@ -156,12 +162,12 @@ public class QuizzActivity extends AppCompatActivity implements QuizzView, Profi
         else{
             Toast.makeText(this, "Mauvaise reponse", Toast.LENGTH_SHORT).show();
         }
-        score_player.setText(score + "/" + cptQuestion+1);
+        score_player.setText(score + "/" + (cptQuestion+1));
 
         Log.e("cptQuestion", String.valueOf(cptQuestion));
         Log.e("size", String.valueOf(questionsList.size()));
         cptQuestion += 1;
-        if(cptQuestion == questionsList.size()-1) {
+        if(cptQuestion < questionsList.size()-1) {
             nextQuestion();
         }
 
@@ -182,6 +188,7 @@ public class QuizzActivity extends AppCompatActivity implements QuizzView, Profi
             xp += BONUS_XP_PERFECT;
         }
 
+        xp += this.experienceUser;
         quizzPresenter.updateExperience((int) xp, this);
         quizzPresenter.updateHistoric(idLevels, (int) xp, this);
 
@@ -196,6 +203,7 @@ public class QuizzActivity extends AppCompatActivity implements QuizzView, Profi
 
     @Override
     public void setExpUser(int exp) {
+        this.experienceUser = exp;
 
     }
 
