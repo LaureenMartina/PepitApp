@@ -45,9 +45,7 @@ public class GameActivity extends MenuActivity implements ProfilUserView {
         profilUserPresenter = new ProfilUserPresenter(this);
         profilUserPresenter.getProfilLUser(this);
 
-        if (idTypeProfil == ID_FIRST_CONNEXION){
-            dialogNewPlayer();
-        }
+
 
 
 
@@ -82,6 +80,8 @@ public class GameActivity extends MenuActivity implements ProfilUserView {
         });
 
 
+
+
     }
 
     @Override
@@ -92,7 +92,12 @@ public class GameActivity extends MenuActivity implements ProfilUserView {
 
     @Override
     public void setProfilIdUser(int profilIdUser) {
+        Log.e("setProfilIdUser: ", String.valueOf(profilIdUser));
         this.idTypeProfil = profilIdUser;
+        Log.i("idTypeProfil", String.valueOf(this.idTypeProfil));
+        if (profilIdUser == ID_FIRST_CONNEXION){
+            dialogNewPlayer();
+        }
     }
 
 

@@ -57,9 +57,21 @@ public class TestPersonalityUserPresenter {
                         // do anything with response
                         Log.d(TAG, "userList size : " + test.size());
                         for (Personality question : test) {
-                            Log.d(TAG, "id : " + question.getAnswer1());
-                            Log.d(TAG, "firstname : " + question.getQuestion());
+                            Log.d(TAG, "reponse : " + question.getAnswer1());
+                            Log.d(TAG, "question : " + question.getQuestion());
+
+                            ArrayList<String> answer = new ArrayList<>();
+                            answer.add(question.getAnswer1());
+                            answer.add(question.getAnswer2());
+                            answer.add(question.getAnswer3());
+                            answerPersonality.add(answer);
+                            questionsPersonality.add(question.getQuestion());
                         }
+
+                        Log.d(TAG, "reponse : " + answerPersonality.toString());
+                        Log.d(TAG, "question : " + questionsPersonality.toString());
+
+                        testPersonalityUserView.getPersonalityTest(questionsPersonality, answerPersonality);
                     }
                     @Override
                     public void onError(ANError anError) {
@@ -109,7 +121,7 @@ public class TestPersonalityUserPresenter {
         String token = SaveUserDataPreferences.getToken(context);
         String baseUrl = "http://10.0.2.2:3000/";
         JSONObject userJson = new JSONObject();
-        Log.i(TAG, "update experience");
+        Log.i("update profil", String.valueOf(idTypeProfil));
         try {
             userJson.put("id_type_profil", idTypeProfil);
 

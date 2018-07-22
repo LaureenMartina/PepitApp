@@ -51,12 +51,13 @@ public class ProfilUserPresenter {
                     @Override
                     public void onResponse(User user) {
                         // do anything with response
-                        Log.d(TAG, "id : " + user.getId());
+                        Log.e(TAG, "id profil : " + user.getId_type_profil());
                         if(user.getId_type_profil() == null){
                             profilUserView.setProfilIdUser(0);
                         }
                         else {
-                            profilUserView.setProfilIdUser(Integer.parseInt(user.getId_type_profil()));
+                            Log.e("in getProfilLUser", String.valueOf(Integer.valueOf(user.getId_type_profil())));
+                            profilUserView.setProfilIdUser(Integer.valueOf(user.getId_type_profil()));
                         }
 
 

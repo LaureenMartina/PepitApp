@@ -16,6 +16,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class TestPersonalityUserActivity extends AppCompatActivity implements TestPersonalityUserView {
     private static final String TAG = "PersonalityUserActivity";
@@ -56,13 +57,18 @@ public class TestPersonalityUserActivity extends AppCompatActivity implements Te
 
     @Override
     public void getPersonalityTest(ArrayList<String> questionsPersonality, ArrayList<ArrayList<String>> answerPersonality) {
-        questionsPersonality.clear();
-        answerPersonality.clear();
+        this.arrQuestionsPersonality.clear();
+        this.arrAnswerPersonality.clear();
         this.arrQuestionsPersonality.addAll(questionsPersonality);
         this.arrAnswerPersonality.addAll(answerPersonality);
 
-        Log.d("questions personality", questionsPersonality.toString());
-        Log.d("answers personality", answerPersonality.toString());
+        Log.d("questions params", questionsPersonality.toString());
+        Log.d("answers params", answerPersonality.toString());
+
+        Log.d("questions attribut", this.arrQuestionsPersonality.toString());
+        Log.d("answers attribut", this.arrAnswerPersonality.toString());
+
+        nextQuestion();
 
     }
 
@@ -79,23 +85,39 @@ public class TestPersonalityUserActivity extends AppCompatActivity implements Te
     }
 
 
+    @OnClick(R.id.btn_answer_personality_quizz)
     public void checkAnswerQuizz(){
         Log.e("cptQuestion", String.valueOf(cptQuestion));
-        if(cptQuestion == arrQuestionsPersonality.size()){
+        if(cptQuestion == arrQuestionsPersonality.size() - 1){
             int idPersonality = endPersonalityTest();
+            Log.e("idpersonality", String.valueOf(idPersonality));
             testPersonalityUserPresenter.updateTypeProfil(this, idPersonality);
 
         }
 
         int idRadioButtonChecked = radio_group_personalityRG.getCheckedRadioButtonId();
-        //RadioButton radioButton = findViewById(idRadioButtonChecked);
+        RadioButton radioButtonChecked = findViewById(idRadioButtonChecked);
+        Log.d("rb checked", radioButtonChecked.toString());
+        Log.d("rb", answer1PersonalityRB.toString());
+        Log.d("rb", String.valueOf(answer1PersonalityRB.equals(radioButtonChecked)));
+        Log.d("rb", String.valueOf(answer2PersonalityRB.equals(radioButtonChecked)));
 
-        arrIdUserAnswer.add(cptQuestion, idRadioButtonChecked);
+        if(answer1PersonalityRB.equals(radioButtonChecked)){
+            arrIdUserAnswer.add(cptQuestion, 1);
+        }
+        if(answer2PersonalityRB.equals(radioButtonChecked)){
+            arrIdUserAnswer.add(cptQuestion, 2);
+        }
+        if(answer3PersonalityRB.equals(radioButtonChecked)){
+            arrIdUserAnswer.add(cptQuestion, 3);
+        }
 
 
-        Log.d("id checked", String.valueOf(idRadioButtonChecked));
         cptQuestion += 1;
-        nextQuestion();
+        if(cptQuestion < arrQuestionsPersonality.size()){
+            nextQuestion();
+        }
+
 
         //Toast.makeText(this, String.valueOf(timeToDoQuizz), Toast.LENGTH_SHORT).show();
     }
@@ -116,9 +138,11 @@ public class TestPersonalityUserActivity extends AppCompatActivity implements Te
                     break;
             }
         }
+        Log.e("cptReponse1", String.valueOf(cptReponse1));
+        Log.e("cptReponse2", String.valueOf(cptReponse2));
+        Log.e("cptReponse3", String.valueOf(cptReponse3));
 
-
-        return cptReponse1 < cptReponse2 ? cptReponse1 < cptReponse3 ? cptReponse1 : cptReponse3 : cptReponse2 < cptReponse3 ? cptReponse2 : cptReponse3;
+        return cptReponse1 > cptReponse2 ? cptReponse1 > cptReponse3 ? 1 : 3 : cptReponse2 > cptReponse3 ? 2 : 3;
 
     }
 

@@ -140,7 +140,7 @@ public class QuizzActivity extends AppCompatActivity implements QuizzView, Profi
 
     public void checkAnswerQuizz(){
         Log.e("cptQuestion", String.valueOf(cptQuestion));
-        if(cptQuestion == NUMBER_QUESTIONS_QUIZZ-1){
+        if(cptQuestion == questionsList.size()-1){
             endOfQuizz();
         }
         //Toast.makeText(this, "Response", Toast.LENGTH_SHORT).show();
@@ -156,12 +156,16 @@ public class QuizzActivity extends AppCompatActivity implements QuizzView, Profi
         else{
             Toast.makeText(this, "Mauvaise reponse", Toast.LENGTH_SHORT).show();
         }
-        score_player.setText(String.valueOf(score) + "/10");
+        score_player.setText(score + "/" + cptQuestion+1);
 
-
-        Log.e("in btn check answer", "");
+        Log.e("cptQuestion", String.valueOf(cptQuestion));
+        Log.e("size", String.valueOf(questionsList.size()));
         cptQuestion += 1;
-        nextQuestion();
+        if(cptQuestion == questionsList.size()-1) {
+            nextQuestion();
+        }
+
+
 
         //Toast.makeText(this, String.valueOf(timeToDoQuizz), Toast.LENGTH_SHORT).show();
 
