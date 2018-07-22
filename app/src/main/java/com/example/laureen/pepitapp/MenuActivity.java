@@ -115,8 +115,8 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case MENU4:
-                //intent = new Intent(MenuActivity.this, RateActivity.class);
-                //startActivity(intent);
+                intent = new Intent(MenuActivity.this, RateActivity.class);
+                startActivity(intent);
                 break;
             default:
                 break;
