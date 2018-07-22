@@ -12,4 +12,9 @@
     <string name="pourcent3String">%1$d fait</string>
 
     <string name="nameUserString">inscrit le %1$s</string>
+
+    <string name="load_question">Chargement de la question</string>
+    <string name="give_score">Votre score est de :</string>
+    <string name="loading_score">Chargement du score...</string>
+    <string name="go_to_menu">Retourner au menu</string>
 </resources>

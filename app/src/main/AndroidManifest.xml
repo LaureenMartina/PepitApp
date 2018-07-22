@@ -23,8 +23,16 @@
         <activity android:name=".SuccessInscriptionActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".InformationActivity" />
+<<<<<<< HEAD
         <activity android:name=".GameActivity" />
         <activity android:name=".LessonActivity"></activity>
+=======
+        <activity android:name=".ProfilUserActivity" />
+        <activity android:name=".GameActivity" />
+        <activity android:name=".QuizzActivity" />
+        <activity android:name=".ResultQuizzActivity" />
+        <activity android:name=".TestPersonalityUserActivity"></activity>
+>>>>>>> origin/profil
     </application>
 
 </manifest>

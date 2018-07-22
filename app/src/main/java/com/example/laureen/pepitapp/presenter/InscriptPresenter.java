@@ -66,6 +66,7 @@ public class InscriptPresenter {
                         anError.printStackTrace();
                     }
                 });
+
     }
 
 }

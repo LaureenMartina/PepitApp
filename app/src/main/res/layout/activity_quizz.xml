@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.laureen.pepitapp.QuizzActivity">
+
+    <TextView
+        android:id="@+id/score_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Score : "/>
+
+    <TextView
+        android:id="@+id/score_during_questions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/score_tv"
+        tools:text="score"/>
+
+    <TextView
+        android:id="@+id/question_quizz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="question"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="70dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <RadioGroup
+        android:id="@+id/radio_group_answer_questions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/question_quizz"
+        android:layout_marginTop="20dp"
+        >
+        <RadioButton
+            android:id="@+id/answer1_quizz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/load_question"/>
+        <RadioButton
+            android:id="@+id/answer2_quizz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/load_question"/>
+        <RadioButton
+            android:id="@+id/answer3_quizz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/load_question"/>
+        <RadioButton
+            android:id="@+id/answer4_quizz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/load_question"/>
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btn_answer_quizz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/radio_group_answer_questions"
+        android:layout_marginTop="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="Valider"
+        />
+
+</android.support.constraint.ConstraintLayout>

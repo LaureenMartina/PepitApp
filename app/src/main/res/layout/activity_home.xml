@@ -151,4 +151,5 @@
             android:layout_toRightOf="@+id/switchFr"
             android:layout_marginLeft="20dp"/>
 
+
 </RelativeLayout>
