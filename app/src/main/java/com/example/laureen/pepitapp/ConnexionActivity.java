@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.laureen.pepitapp.model.SaveUserDataPreferences;
 import com.example.laureen.pepitapp.presenter.ConnectPresenter;
@@ -74,10 +75,6 @@ public class ConnexionActivity extends AppCompatActivity implements ConnectView 
 
     @Override
     public void validationData(String token) {
-        // TODO : gestion des errors si pb sur token !
-
-        //Toast.makeText(this, "GOOD", Toast.LENGTH_SHORT).show();
-
         //Créer le fichier spécifique au user
         String name = username.getText().toString();
         SaveUserDataPreferences dataUser = new SaveUserDataPreferences(name);
@@ -87,5 +84,9 @@ public class ConnexionActivity extends AppCompatActivity implements ConnectView 
 
         Intent intent = new Intent(ConnexionActivity.this, HomeActivity.class);
         startActivity(intent);
+    }
+
+    public void errorConnectData(){
+        Toast.makeText(this, "Données insérées incorrectes", Toast.LENGTH_SHORT).show();
     }
 }

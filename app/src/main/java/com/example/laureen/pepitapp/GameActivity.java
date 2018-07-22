@@ -54,7 +54,7 @@ public class GameActivity extends MenuActivity {
                 intent.putExtra("ParamCallKey", id_user);
 
                 startActivity(intent);*/
-                
+
                 // TEST OPEN UNITY
                 openUnity(token);
             }
