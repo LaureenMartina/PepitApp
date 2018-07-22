@@ -1,19 +1,18 @@
 package com.example.laureen.pepitapp;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.laureen.pepitapp.model.User;
 import com.example.laureen.pepitapp.presenter.TestPersonalityUserPresenter;
 import com.example.laureen.pepitapp.view.TestPersonalityUserView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,6 +20,11 @@ import butterknife.OnClick;
 
 public class TestPersonalityUserActivity extends AppCompatActivity implements TestPersonalityUserView {
     private static final String TAG = "PersonalityUserActivity";
+
+    public int typeProfilNinja = 1;
+    public int typeProfilProf = 2;
+    public int typeProfilExplorer = 3;
+
 
     @BindView(R.id.question_personality_quizz)
     TextView questionPersonalityQuizzTV;
@@ -91,6 +95,10 @@ public class TestPersonalityUserActivity extends AppCompatActivity implements Te
         Log.e("cptQuestion", String.valueOf(cptQuestion));
         if(cptQuestion == arrQuestionsPersonality.size() - 1){
             int idPersonality = endPersonalityTest();
+
+            User profil = new User();
+            profil.setId_type_profil(idPersonality);
+
             Log.e("idpersonality", String.valueOf(idPersonality));
             testPersonalityUserPresenter.updateTypeProfil(this, idPersonality);
 
@@ -99,8 +107,8 @@ public class TestPersonalityUserActivity extends AppCompatActivity implements Te
 
         }
 
-        int idRadioButtonChecked = radio_group_personalityRG.getCheckedRadioButtonId();
-        RadioButton radioButtonChecked = findViewById(idRadioButtonChecked);
+        int idRadioButtonChecked = radio_group_personalityRG.getCheckedRadioButtonId(); // ex id = 21544
+        RadioButton radioButtonChecked = findViewById(idRadioButtonChecked); // nol id dans le xml
         Log.d("rb checked", radioButtonChecked.toString());
         Log.d("rb", answer1PersonalityRB.toString());
         Log.d("rb", String.valueOf(answer1PersonalityRB.equals(radioButtonChecked)));
@@ -121,9 +129,6 @@ public class TestPersonalityUserActivity extends AppCompatActivity implements Te
         if(cptQuestion < arrQuestionsPersonality.size() -1){
             nextQuestion();
         }
-
-
-        //Toast.makeText(this, String.valueOf(timeToDoQuizz), Toast.LENGTH_SHORT).show();
     }
 
     public int endPersonalityTest(){
@@ -146,7 +151,7 @@ public class TestPersonalityUserActivity extends AppCompatActivity implements Te
         Log.e("cptReponse2", String.valueOf(cptReponse2));
         Log.e("cptReponse3", String.valueOf(cptReponse3));
 
-        return cptReponse1 > cptReponse2 ? cptReponse1 > cptReponse3 ? 1 : 3 : cptReponse2 > cptReponse3 ? 2 : 3;
+        return cptReponse1 > cptReponse2 ? cptReponse1 > cptReponse3 ? typeProfilNinja : typeProfilExplorer : cptReponse2 > cptReponse3 ? typeProfilProf : typeProfilExplorer;
 
     }
 

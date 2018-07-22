@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imgGamer"
+            android:id="@+id/imgProfil"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginLeft="20dp"
@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
-            android:layout_toRightOf="@+id/imgGamer"
+            android:layout_toRightOf="@+id/imgProfil"
             android:text="Username ou Email"
             android:textColor="#FE5303"
             android:textSize="15dp"
@@ -27,9 +27,9 @@
             android:id="@+id/dateInscriptUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/imgGamer"
+            android:layout_alignBottom="@+id/imgProfil"
             android:layout_marginLeft="30dp"
-            android:layout_toRightOf="@+id/imgGamer"
+            android:layout_toRightOf="@+id/imgProfil"
             android:text="date d'inscription"/>
 
         <ImageView

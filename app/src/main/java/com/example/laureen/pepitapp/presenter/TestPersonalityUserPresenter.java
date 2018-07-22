@@ -1,32 +1,22 @@
 package com.example.laureen.pepitapp.presenter;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.androidnetworking.interfaces.ParsedRequestListener;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.example.laureen.pepitapp.model.Personality;
 import com.example.laureen.pepitapp.model.SaveUserDataPreferences;
 import com.example.laureen.pepitapp.view.TestPersonalityUserView;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Florian on 21/07/2018.
- */
 
 public class TestPersonalityUserPresenter {
     private static final String TAG = "PersonalityUsePresenter";
@@ -37,7 +27,6 @@ public class TestPersonalityUserPresenter {
     private ArrayList<ArrayList<String>> answerPersonality = new ArrayList<>();
 
     public TestPersonalityUserPresenter(TestPersonalityUserView view){
-
         testPersonalityUserView = view;
     }
 
@@ -45,7 +34,6 @@ public class TestPersonalityUserPresenter {
         Log.e("in getTestPersonality", getClass().toString());
         String token = SaveUserDataPreferences.getToken(context);
         String baseUrl = "http://10.0.2.2:3000/";
-
 
         AndroidNetworking.get(baseUrl+"test_personality")
                 .addHeaders("AUTHORIZATION", token)
@@ -78,40 +66,6 @@ public class TestPersonalityUserPresenter {
                         Log.e("on error : ",anError.toString());
                     }
                 });
-                /*
-                .getAsJSONArray(new JSONArrayRequestListener() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        //Log.e("on response : ",response.toString());
-                        //Log.d(TAG, "onResponse: response : >" + response.toString());
-                        JSONArray array = response;
-                        //JSONArray array = response.getJSONArray(Integer.parseInt("results"));
-                        JsonParser parser = new JsonParser();
-                        JsonElement arr = parser.parse(array.toString());
-                        Gson gson = new GsonBuilder().create();
-                        Personality[] results = gson.fromJson(arr, Personality[].class);
-
-                        Log.d("result", results.toString());
-                        for (int i = 0; i < results.length; i++){
-                                ArrayList<String> answer = new ArrayList<>();
-                                answer.add(results[i].getAnswer1());
-                                answer.add(results[i].getAnswer2());
-                                answer.add(results[i].getAnswer3());
-                                answerPersonality.add(answer);
-                                questionsPersonality.add(results[i].getQuestion());
-
-
-                        }
-
-                        testPersonalityUserView.getPersonalityTest(questionsPersonality, answerPersonality);
-                    }
-
-                    @Override
-                    public void onError(ANError anError) {
-                        Log.e("on error : ",anError.toString());
-                    }
-                });
-                */
 
         Log.i("token user : ", token);
 

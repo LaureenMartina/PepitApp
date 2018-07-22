@@ -25,7 +25,7 @@ public class User {
     private String email;
     @SerializedName("id_type_profil")
     @Expose
-    private String id_type_profil;
+    private int id_type_profil;
     @SerializedName("level")
     @Expose
     private Integer level;
@@ -84,11 +84,11 @@ public class User {
         this.email = email;
     }
 
-    public String getId_type_profil() {
+    public int getId_type_profil() {
         return id_type_profil;
     }
 
-    public void setId_type_profil(String id_type_profil) {
+    public void setId_type_profil(int id_type_profil) {
         this.id_type_profil = id_type_profil;
     }
 
