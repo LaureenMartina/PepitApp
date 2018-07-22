@@ -52,6 +52,7 @@ public class ConnectPresenter {
 
                     @Override
                     public void onError(ANError anError) {
+                        connectView.errorConnectData();
                         anError.printStackTrace();
                     }
                 });

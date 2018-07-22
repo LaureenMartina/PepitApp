@@ -12,15 +12,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.example.laureen.pepitapp.model.Quizz;
+import com.example.laureen.pepitapp.model.SaveUserDataPreferences;
 import com.example.laureen.pepitapp.presenter.ProfilUserPresenter;
 import com.example.laureen.pepitapp.view.ProfilUserView;
-import com.example.laureen.pepitapp.view.TestPersonalityUserView;
-
-import butterknife.BindView;
-import butterknife.OnClick;
 
 public class GameActivity extends MenuActivity implements ProfilUserView {
+
 
     View homeView;
     private ProfilUserPresenter profilUserPresenter;
@@ -33,6 +30,7 @@ public class GameActivity extends MenuActivity implements ProfilUserView {
     ImageView btnSombrero;
     ImageView btnAdventure;
 
+    private String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,16 +40,15 @@ public class GameActivity extends MenuActivity implements ProfilUserView {
         homeView = inflater.inflate(R.layout.activity_game, null);
         content.addView(homeView);
 
+
         profilUserPresenter = new ProfilUserPresenter(this);
         profilUserPresenter.getProfilLUser(this);
 
-
-
-
-
-
-
         ImageView btnQuizz = findViewById(R.id.btn_gameQuizz);
+
+        token = SaveUserDataPreferences.getToken(this);
+
+        btnQuizz = (ImageView) findViewById(R.id.btn_gameQuizz);
         btnSombrero = (ImageView) findViewById(R.id.btn_gameSombrero);
         btnAdventure = (ImageView) findViewById(R.id.btn_gameAdventure);
 
@@ -80,10 +77,11 @@ public class GameActivity extends MenuActivity implements ProfilUserView {
                 intent.putExtra("ParamCallKey", id_user);
 
                 startActivity(intent);*/
+
+                // TEST OPEN UNITY
+                openUnity(token);
             }
         });
-
-
 
 
     }
@@ -124,5 +122,12 @@ public class GameActivity extends MenuActivity implements ProfilUserView {
 
                 .setIcon(android.R.drawable.ic_dialog_info)
                 .show();
+    }
+
+    private void openUnity(String parameter) {
+        //Intent intent = new Intent(this, UnityPlayerActivity.class);
+        //intent.putExtra("ParamCallKey", parameter);
+
+        //startActivity(intent);
     }
 }

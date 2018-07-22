@@ -6,4 +6,5 @@ public interface ConnectView {
 
     void validationData(String token);
     void popupAlert();
+    void errorConnectData();
 }

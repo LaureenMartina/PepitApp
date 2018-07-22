@@ -56,9 +56,10 @@
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:src="@drawable/quizz"
-            android:layout_marginTop="230dp"
             android:layout_centerVertical="true"
+            android:layout_below="@+id/imgStat"
             android:layout_marginLeft="25dp"
+            android:layout_marginTop="20dp"
             />
 
         <TextView
@@ -97,6 +98,7 @@
             android:layout_height="90dp"
             android:layout_alignTop="@+id/imgAdventure"
             android:layout_toRightOf="@+id/imgAdventure"
+            android:layout_centerHorizontal="true"
             android:layout_marginLeft="30dp"
             android:src="@drawable/casse_sombrero"/>
 
@@ -136,7 +138,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_below="@+id/titleLanguage"
+            android:layout_below="@+id/imgLanguage"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="70dp"/>
 
@@ -146,7 +148,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_below="@+id/titleLanguage"
+            android:layout_below="@+id/imgLanguage"
             android:layout_marginTop="20dp"
             android:layout_toRightOf="@+id/switchFr"
             android:layout_marginLeft="20dp"/>
