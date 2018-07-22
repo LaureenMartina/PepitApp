@@ -1,8 +1,11 @@
 package com.example.laureen.pepitapp;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +25,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class QuizzActivity extends AppCompatActivity implements QuizzView, ProfilUserView {
     private static final String TAG = "QuizzActivity";
@@ -41,6 +43,8 @@ public class QuizzActivity extends AppCompatActivity implements QuizzView, Profi
     private float xp = 0;
     private int score = 0;
     private int cptQuestion = 0;
+    private int difficulty;
+
     private int NUMBER_QUESTIONS_QUIZZ = 9;
     private int LIMIT_SCORE_FOR_BONUS = 7;
     private int LIMIT_TIME_FOR_BONUS = 60;
@@ -78,13 +82,16 @@ public class QuizzActivity extends AppCompatActivity implements QuizzView, Profi
 
         timeStartQuizz = System.currentTimeMillis();
 
+        Intent intent = getIntent();
+        difficulty = intent.getIntExtra("difficulty", 0);
+
         quizzPresenter = new QuizzPresenter((QuizzView) this);
         profilUserPresenter = new ProfilUserPresenter((ProfilUserView) this);
         //add presenter to get profil and get exp
         // add clause to know if exp is null
 
-        quizzPresenter.questionQuizz(this);
-        profilUserPresenter.getProfilLUser(this);
+        quizzPresenter.questionQuizz(this, difficulty);
+        profilUserPresenter.getProfilUser(this);
 
         Button buttonAnswerQuizz = findViewById(R.id.btn_answer_quizz);
 
@@ -101,24 +108,43 @@ public class QuizzActivity extends AppCompatActivity implements QuizzView, Profi
 
     @Override
     public void getQuizz(List<String> questionApi, List<List<String>> incorrectAnswerApi, List<String> correctAnswerApi, ArrayList<Integer> idLevelsList) {
-        Log.e("in getQuizz", "test");
-        questionsList.clear();
-        incorrectAnswer.clear();
-        correctAnswer.clear();
-        questionsList.addAll(questionApi);
-        incorrectAnswer.addAll(incorrectAnswerApi);
-        correctAnswer.addAll(correctAnswerApi);
-        idLevels.addAll(idLevelsList);
-        Log.e("list question", questionsList.toString());
-        Log.e("list reponse", incorrectAnswer.toString());
-        Log.e("list bonne reponse", correctAnswer.toString());
-        Log.e("list id levels", idLevels.toString());
+        if(questionApi.size() <= NUMBER_QUESTIONS_QUIZZ){
+            AlertDialog.Builder builder;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Dialog_Alert);
+            } else {
+                builder = new AlertDialog.Builder(this);
+            }
+            builder.setTitle("Rechargement du Quizz")
+                    .setMessage("La limite de questions a été atteint et nécessite une nouvelle mise à jour\nRevenez demain !")
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(QuizzActivity.this, GameActivity.class);
+                            startActivity(intent);
+                        }
+                    })
 
-        nextQuestion();
+                    .setIcon(android.R.drawable.ic_dialog_info)
+                    .show();
+        } else {
+            Log.e("in getQuizz", "test");
+            questionsList.clear();
+            incorrectAnswer.clear();
+            correctAnswer.clear();
+            questionsList.addAll(questionApi);
+            incorrectAnswer.addAll(incorrectAnswerApi);
+            correctAnswer.addAll(correctAnswerApi);
+            idLevels.addAll(idLevelsList);
+
+            Log.e("list question", questionsList.toString());
+            Log.e("list reponse", incorrectAnswer.toString());
+            Log.e("list bonne reponse", correctAnswer.toString());
+            Log.e("list id levels", idLevels.toString());
+
+            nextQuestion();
+        }
     }
-
-
-
 
     public void nextQuestion(){
         Log.d(TAG, "question : " + questionsList.get(cptQuestion));
@@ -134,15 +160,6 @@ public class QuizzActivity extends AppCompatActivity implements QuizzView, Profi
         answer3.setText(incorrectAnswer.get(cptQuestion).get(2));
         answer4.setText(incorrectAnswer.get(cptQuestion).get(3));
     }
-/*
-    public void setAnswerQuizz(){
-        answer1.setText(correctAnswer);
-        answer2.setText(String.valueOf(incorrectAnswer.get(0)));
-    }
-*/
-
-
-
 
     public void checkAnswerQuizz(){
         Log.e("cptQuestion", String.valueOf(cptQuestion));
@@ -194,7 +211,7 @@ public class QuizzActivity extends AppCompatActivity implements QuizzView, Profi
 
 
         Intent intent = new Intent(this, ResultQuizzActivity.class);
-        intent.putExtra("score", String.valueOf(score));
+        intent.putExtra("score", String.valueOf(score) + "/" + (cptQuestion+1));
 
         startActivity(intent);
 
@@ -209,6 +226,9 @@ public class QuizzActivity extends AppCompatActivity implements QuizzView, Profi
 
     @Override
     public void setProfilIdUser(int profilIdUser) {
+    }
 
+    @Override
+    public void setLevelUser(int levelUser) {
     }
 }

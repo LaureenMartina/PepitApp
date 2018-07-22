@@ -25,20 +25,4 @@ public class SaveUserDataPreferences {
         editor.putString(TOKEN_KEY, token);
         editor.apply();
     }
-
-    /*public static void verifData(){
-        //objectif : sauvegarder 1 seule fois le nom et l'age de l'utilisateur
-        //pour cela, on commence par regarder si on a déjà des éléments sauvegardés
-        if (prefs.contains(PREF_EMAIL) && prefs.contains(TOKEN_KEY)) {
-            String token = sharedPreferences.getString(PREF_EMAIL, null);
-            String name = sharedPreferences.getString(TOKEN_KEY, null);
-        } else {
-            //si aucun utilisateur n'est sauvegardé, on ajouter [token,nom]
-            prefs
-                    .edit()
-                    .putString(PREF_EMAIL, "")
-                    .putString(TOKEN_KEY, "")
-                    .apply();
-        }
-    }*/
 }

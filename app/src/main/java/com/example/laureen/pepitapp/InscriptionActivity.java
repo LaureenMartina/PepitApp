@@ -133,7 +133,7 @@ public class InscriptionActivity extends AppCompatActivity implements InscriptVi
                 String _confirmPassword = confirmPassword.getText().toString();
                 int _age = age.getValue();
 
-                inscriptPresenter.verifyData(_lastname, _firstname, _username, _email, _password, _confirmPassword, _age);
+                inscriptPresenter.verifyData(_username, _lastname, _firstname, _email, _password, _confirmPassword, _age);
             }
         });
     }

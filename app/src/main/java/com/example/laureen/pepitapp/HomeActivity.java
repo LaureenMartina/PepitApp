@@ -7,14 +7,18 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.laureen.pepitapp.model.User;
+import com.example.laureen.pepitapp.presenter.ProfilUserPresenter;
+import com.example.laureen.pepitapp.view.ProfilUserView;
 
-public class HomeActivity extends MenuActivity {
+public class HomeActivity extends MenuActivity implements ProfilUserView {
 
     View homeView;
 
     ImageView imgProfil;
+    TextView experience;
+    TextView levelUser;
 
+    private ProfilUserPresenter profilUserPresenter;
 
     public int typeProfilUser;
 
@@ -27,11 +31,33 @@ public class HomeActivity extends MenuActivity {
         content.addView(homeView);
 
         imgProfil = findViewById(R.id.imgProfil);
+        experience = findViewById(R.id.nbExp);
+        levelUser = findViewById(R.id.nbLevel);
 
-        User profil = new User();
-        int idProfil = profil.getId_type_profil();
+        //experience.setText("blabla");
 
-        switch (idProfil){
+        profilUserPresenter = new ProfilUserPresenter((ProfilUserView) this);
+        profilUserPresenter.getProfilUser(this);
+    }
+
+    @Override
+    public void setExpUser(int exp) {
+        experience.setText(String.valueOf(exp));
+
+        if(exp < 2500){
+            levelUser.setText("Débutant");
+        }else if(exp > 2500 && exp < 7000){
+            levelUser.setText("Intermédiaire");
+        }else if(exp > 7000 && exp < 12000){
+            levelUser.setText("Pro");
+        }else {
+            levelUser.setText("Avancé");
+        }
+    }
+
+    @Override
+    public void setProfilIdUser(int profilIdUser) {
+        switch (profilIdUser){
             case 1:
                 imgProfil.setImageDrawable(getResources().getDrawable(R.drawable.ninja));
                 break;
@@ -44,12 +70,10 @@ public class HomeActivity extends MenuActivity {
             default:
                 break;
         }
+    }
 
+    @Override
+    public void setLevelUser(int levelUser) {
 
-
-        TextView pourcentTextView = (TextView) findViewById(R.id.pourcent);
-        //pourcentTextView.setText(this.getString(R.string.pourcentString, 67));
-        TextView pourcent2TextView = (TextView) findViewById(R.id.pourcent2);
-        TextView pourcent3TextView = (TextView) findViewById(R.id.pourcent3);
     }
 }

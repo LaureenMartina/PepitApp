@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.laureen.pepitapp.model.SaveUserDataPreferences;
@@ -23,6 +22,7 @@ public class GameActivity extends MenuActivity implements ProfilUserView {
     private ProfilUserPresenter profilUserPresenter;
     private int userExp;
     private int idTypeProfil;
+    private int level;
 
     private int ID_FIRST_CONNEXION = 0;
 
@@ -42,7 +42,7 @@ public class GameActivity extends MenuActivity implements ProfilUserView {
 
 
         profilUserPresenter = new ProfilUserPresenter(this);
-        profilUserPresenter.getProfilLUser(this);
+        profilUserPresenter.getProfilUser(this);
 
         ImageView btnQuizz = findViewById(R.id.btn_gameQuizz);
 
@@ -57,6 +57,7 @@ public class GameActivity extends MenuActivity implements ProfilUserView {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), QuizzActivity.class);
+                intent.putExtra("difficulty", level);
                 startActivity(intent);
 
             }
@@ -89,7 +90,6 @@ public class GameActivity extends MenuActivity implements ProfilUserView {
     @Override
     public void setExpUser(int exp) {
         this.userExp = exp;
-
     }
 
     @Override
@@ -100,6 +100,11 @@ public class GameActivity extends MenuActivity implements ProfilUserView {
         if (profilIdUser == ID_FIRST_CONNEXION){
             dialogNewPlayer();
         }
+    }
+
+    @Override
+    public void setLevelUser(int levelUser) {
+        level = levelUser;
     }
 
 

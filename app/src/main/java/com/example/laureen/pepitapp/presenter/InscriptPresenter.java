@@ -1,5 +1,7 @@
 package com.example.laureen.pepitapp.presenter;
 
+import android.util.Log;
+
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
@@ -49,6 +51,9 @@ public class InscriptPresenter {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        Log.e("username:", username);
+        Log.e("lastname:", lastname);
 
         AndroidNetworking.post(baseUrl+"auth/signup")
                 .addJSONObjectBody(userJson)

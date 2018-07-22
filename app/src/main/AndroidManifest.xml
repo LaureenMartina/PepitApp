@@ -28,6 +28,7 @@
         <activity android:name=".QuizzActivity" />
         <activity android:name=".ResultQuizzActivity" />
         <activity android:name=".TestPersonalityUserActivity"></activity>
+        <activity android:name=".RateActivity" />
     </application>
 
 </manifest>

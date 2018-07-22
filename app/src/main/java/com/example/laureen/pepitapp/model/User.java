@@ -28,10 +28,10 @@ public class User {
     private int id_type_profil;
     @SerializedName("level")
     @Expose
-    private Integer level;
+    private int level;
     @SerializedName("exp")
     @Expose
-    private Integer exp;
+    private int exp;
     @SerializedName("userType")
     @Expose
     private Integer userType;

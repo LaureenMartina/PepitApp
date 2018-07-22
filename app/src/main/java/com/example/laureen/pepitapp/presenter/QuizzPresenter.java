@@ -1,13 +1,11 @@
 package com.example.laureen.pepitapp.presenter;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
-import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.example.laureen.pepitapp.model.Quizz;
 import com.example.laureen.pepitapp.model.SaveUserDataPreferences;
@@ -44,23 +42,23 @@ public class QuizzPresenter {
         QuizzView = view;
     }
 
-    public void questionQuizz(Context context){
+    public void questionQuizz(Context context, int difficulty){
         Log.e("in question quizz", getClass().toString());
+        Log.e("Difficulty: ", String.valueOf(difficulty));
+
         String token = SaveUserDataPreferences.getToken(context);
         String baseUrl = "http://10.0.2.2:3000/";
 
 
-        AndroidNetworking.get(baseUrl+"level_quiz/questions_quiz")
+        AndroidNetworking.get(baseUrl+"level_quizz/questions_quizz")
                 .addHeaders("AUTHORIZATION", token)
+                .addQueryParameter("difficulty", String.valueOf(difficulty))
                 .setTag("Connect")
                 .build()
                 .getAsJSONArray(new JSONArrayRequestListener() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        //Log.e("on response : ",response.toString());
-                        //Log.d(TAG, "onResponse: response : >" + response.toString());
                         JSONArray array = response;
-                        //JSONArray array = response.getJSONArray(Integer.parseInt("results"));
                         JsonParser parser = new JsonParser();
                         JsonElement arr = parser.parse(array.toString());
                         Gson gson = new GsonBuilder().create();
@@ -68,33 +66,21 @@ public class QuizzPresenter {
                         Log.d(TAG, "onResponse: " + results[0].toString());
                         Log.d(TAG, "question : " + results[0].getQuestion());
 
-                        for (int i = 0; i<10; i++){
-                            questionsList.add(results[i].getQuestion());
-                        }
-                        for (int i = 0; i<10; i++){
-                            Log.d(TAG, "id_levels : " + results[i].getIdLevels());
-                            idLevelsList.add(results[i].getIdLevels());
-                        }
-                        for (int i = 0; i<10; i++){
-                            ArrayList<String> answer = new ArrayList<>();
-                            answer.add(results[i].getAnswer1());
-                            answer.add(results[i].getAnswer2());
-                            answer.add(results[i].getAnswer3());
-                            answer.add(results[i].getAnswer4());
-                            incorrectAnswer.add(answer);
-                        }
-                        for (int i = 0; i<10; i++){
-                            correctAnswer.add(results[i].getCorrectAnswer());
-                        }
+                        for (Quizz quizz : results) {
+                            questionsList.add(quizz.getQuestion());
+                            idLevelsList.add(quizz.getIdLevels());
 
-                        Log.d(TAG, "answers : " + incorrectAnswer.toString());
-                        Log.d(TAG, "correct answer : " + results[9].getCorrectAnswer());
+                            ArrayList<String> answer = new ArrayList<>();
+                            answer.add(quizz.getAnswer1());
+                            answer.add(quizz.getAnswer2());
+                            answer.add(quizz.getAnswer3());
+                            answer.add(quizz.getAnswer4());
+                            incorrectAnswer.add(answer);
+
+                            correctAnswer.add(quizz.getCorrectAnswer());
+                        }
 
                         QuizzView.getQuizz(questionsList, incorrectAnswer, correctAnswer, idLevelsList);
-                        //questionOfQuizz = results[0].getQuestion().toString();
-                        //questionQuizz.setText(questionOfQuizz);
-                        //setAnswerQuizz(results[0].getIncorrectAnswers(), results[0].getCorrectAnswer());
-                        //System.out.println(results[1].getQuestion().toString()); //Incrementer question pour questionnaire
                     }
 
                     @Override
@@ -108,8 +94,7 @@ public class QuizzPresenter {
     }
 
     public void updateExperience(int exp, Context context){
-        SaveUserDataPreferences dataUser = new SaveUserDataPreferences("flowpsouille");
-        String token = dataUser.getToken(context);
+        String token = SaveUserDataPreferences.getToken(context);
         String baseUrl = "http://10.0.2.2:3000/";
         JSONObject userJson = new JSONObject();
         Log.i(TAG, "update experience");
@@ -120,7 +105,7 @@ public class QuizzPresenter {
             e.printStackTrace();
         }
 
-        AndroidNetworking.post(baseUrl+"update_exp")
+        AndroidNetworking.post(baseUrl+"users/update_exp")
                 .addJSONObjectBody(userJson)
                 .setTag("Connect")
                 .addHeaders("AUTHORIZATION", token)
@@ -128,7 +113,7 @@ public class QuizzPresenter {
                 .getAsString(new StringRequestListener() {
                     @Override
                     public void onResponse(String response) {
-                        Log.d("data save : ", "succed");
+                        Log.d("data experience save : ", "succed");
                     }
 
                     @Override
@@ -139,8 +124,7 @@ public class QuizzPresenter {
     }
 
     public void updateHistoric(ArrayList<Integer> id_levels, int exp, Context context){
-        SaveUserDataPreferences dataUser = new SaveUserDataPreferences("flowpsouille");
-        String token = dataUser.getToken(context);
+        String token = SaveUserDataPreferences.getToken(context);
         String baseUrl = "http://10.0.2.2:3000/";
         JSONObject userJson = new JSONObject();
         JSONObject levelJson = new JSONObject();
@@ -156,21 +140,19 @@ public class QuizzPresenter {
             userJson.put("id_game", 4);
             userJson.put("score", exp);
 
-            //idLevelArray.put(userJson);
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        AndroidNetworking.post(baseUrl+"historic/historic/create")
+        AndroidNetworking.post(baseUrl+"historic/create")
                 .addJSONObjectBody(userJson)
-                //.addJSONArrayBody(idLevelArray)
                 .setTag("Connect")
                 .addHeaders("AUTHORIZATION", token)
                 .build()
                 .getAsString(new StringRequestListener() {
                     @Override
                     public void onResponse(String response) {
-                        Log.d("data save : ", "succed");
+                        Log.d("data historic save : ", "succed");
                     }
 
                     @Override

@@ -1,26 +1,14 @@
 package com.example.laureen.pepitapp.presenter;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.JSONArrayRequestListener;
-import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.androidnetworking.interfaces.ParsedRequestListener;
 import com.example.laureen.pepitapp.model.SaveUserDataPreferences;
 import com.example.laureen.pepitapp.model.User;
 import com.example.laureen.pepitapp.view.ProfilUserView;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 
 /**
  * Created by Florian on 21/07/2018.
@@ -36,8 +24,8 @@ public class ProfilUserPresenter {
         profilUserView = view;
     }
 
-    public void getProfilLUser(Context context){
-        Log.e("in getProfilLUser", getClass().toString());
+    public void getProfilUser(Context context){
+        Log.e("in getProfilUser", getClass().toString());
         //SaveUserDataPreferences dataUser = new SaveUserDataPreferences("flowpsouille");
         String token = SaveUserDataPreferences.getToken(context);
         String baseUrl = "http://10.0.2.2:3000/";
@@ -52,16 +40,16 @@ public class ProfilUserPresenter {
                     public void onResponse(User user) {
                         // do anything with response
                         Log.e(TAG, "id profil : " + user.getId_type_profil());
-                        if(user.getId_type_profil() == null){
+                        if(user.getId_type_profil() == 0){
                             profilUserView.setProfilIdUser(0);
                         }
                         else {
-                            Log.e("in getProfilLUser", String.valueOf(Integer.valueOf(user.getId_type_profil())));
-                            profilUserView.setProfilIdUser(Integer.valueOf(user.getId_type_profil()));
+                            Log.e("in getProfilUser", String.valueOf(user.getId_type_profil()));
+                            profilUserView.setProfilIdUser(user.getId_type_profil());
                         }
 
                         profilUserView.setExpUser(user.getExp());
-
+                        profilUserView.setLevelUser(user.getLevel());
 
                     }
                     @Override
@@ -71,6 +59,5 @@ public class ProfilUserPresenter {
                 });
 
         Log.i("token user : ", token);
-
     }
 }

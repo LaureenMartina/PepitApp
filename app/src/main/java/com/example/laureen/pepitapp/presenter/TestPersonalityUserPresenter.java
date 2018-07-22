@@ -35,7 +35,7 @@ public class TestPersonalityUserPresenter {
         String token = SaveUserDataPreferences.getToken(context);
         String baseUrl = "http://10.0.2.2:3000/";
 
-        AndroidNetworking.get(baseUrl+"test_personality")
+        AndroidNetworking.get(baseUrl+"/personality/test_personality")
                 .addHeaders("AUTHORIZATION", token)
                 .setTag("Connect")
                 .build()
@@ -56,7 +56,7 @@ public class TestPersonalityUserPresenter {
                             questionsPersonality.add(question.getQuestion());
                         }
 
-                        Log.d(TAG, "reponse : " + answerPersonality.toString());
+                        Log.d(TAG, "response : " + answerPersonality.toString());
                         Log.d(TAG, "question : " + questionsPersonality.toString());
 
                         testPersonalityUserView.getPersonalityTest(questionsPersonality, answerPersonality);

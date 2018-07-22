@@ -119,6 +119,7 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             default:
+                finish();
                 break;
         }
 
