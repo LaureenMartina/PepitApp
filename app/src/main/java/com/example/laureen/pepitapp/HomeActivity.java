@@ -1,14 +1,21 @@
 package com.example.laureen.pepitapp;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.laureen.pepitapp.presenter.ProfilUserPresenter;
 import com.example.laureen.pepitapp.view.ProfilUserView;
+
+import java.util.Locale;
 
 public class HomeActivity extends MenuActivity implements ProfilUserView {
 
@@ -17,6 +24,8 @@ public class HomeActivity extends MenuActivity implements ProfilUserView {
     ImageView imgProfil;
     TextView experience;
     TextView levelUser;
+    Switch fr;
+    Switch en;
 
     private ProfilUserPresenter profilUserPresenter;
 
@@ -34,7 +43,23 @@ public class HomeActivity extends MenuActivity implements ProfilUserView {
         experience = findViewById(R.id.nbExp);
         levelUser = findViewById(R.id.nbLevel);
 
-        //experience.setText("blabla");
+        fr = findViewById(R.id.switchFr);
+        en = findViewById(R.id.switchEn);
+
+        fr.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                en.setChecked(false);
+                changeLanguage("fr");
+            }
+        });
+
+        en.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                fr.setChecked(false);
+                en.setChecked(true);
+                changeLanguage("en");
+            }
+        });
 
         profilUserPresenter = new ProfilUserPresenter((ProfilUserView) this);
         profilUserPresenter.getProfilUser(this);
@@ -73,7 +98,13 @@ public class HomeActivity extends MenuActivity implements ProfilUserView {
     }
 
     @Override
-    public void setLevelUser(int levelUser) {
+    public void setLevelUser(int levelUser) {}
 
+    public void changeLanguage (String languageSelected) {
+        Locale locale = new Locale(languageSelected);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale= locale;
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
     }
 }

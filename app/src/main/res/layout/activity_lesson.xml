@@ -10,7 +10,7 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cours disponibles"
+        android:text="@string/availableLesson"
         android:textSize="20dp"
         android:textColor="#FE5303"
         android:layout_centerHorizontal="true"
@@ -26,7 +26,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/title"
         android:layout_marginTop="20dp"
-        android:text="LINUX"
+        android:text="@string/lessonLinux"
         />
 
     <Button
@@ -36,7 +36,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/learnLinux"
         android:layout_marginTop="20dp"
-        android:text="JAVASCRIPT"
+        android:text="@string/lessonJS"
         />
 
     <Button
@@ -46,7 +46,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/learnJs"
         android:layout_marginTop="20dp"
-        android:text="PYTHON"
+        android:text="@string/lessonPython"
         />
 
     <Button
@@ -56,7 +56,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/learnPython"
         android:layout_marginTop="20dp"
-        android:text="LANGAGE C"
+        android:text="@string/lessonC"
         />
 
 </RelativeLayout>

@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Connexion"
+        android:text="@string/connexion"
         android:textSize="30dp"
         android:gravity="center"
         android:textColor="#FE5303"
@@ -20,7 +20,7 @@
         android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="username"
+        android:hint="@string/username"
         android:gravity="center"
         android:layout_marginTop="40dp"
         />
@@ -29,7 +29,7 @@
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
+        android:hint="@string/password"
         android:gravity="center"
         android:inputType="textPassword"
         android:layout_marginTop="30dp"
@@ -39,7 +39,7 @@
         android:id="@+id/btn_signin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Se Connecter"
+        android:text="@string/validConnexion"
         android:layout_marginTop="30dp"
         />
 

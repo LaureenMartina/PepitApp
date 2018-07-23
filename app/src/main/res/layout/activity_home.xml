@@ -17,21 +17,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:layout_toRightOf="@+id/imgProfil"
-            android:text="Username ou Email"
+            android:text="@string/username"
             android:textColor="#FE5303"
-            android:textSize="15dp"
+            android:textSize="20dp"
             android:textStyle="bold"/>
-
-        <TextView
-            android:id="@+id/dateInscriptUser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/imgProfil"
-            android:layout_marginLeft="30dp"
-            android:layout_toRightOf="@+id/imgProfil"
-            android:text="date d'inscription"/>
 
         <ImageView
             android:id="@+id/imgStat"
@@ -47,7 +38,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="155dp"
             android:layout_toRightOf="@+id/imgStat"
-            android:text="STATISTIQUES"
+            android:text="@string/statistics"
             android:textColor="#FE5303"
             android:textSize="15dp"
             android:textStyle="bold"/>
@@ -56,7 +47,7 @@
             android:id="@+id/titleExp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Expérience Gagnée:"
+            android:text="@string/expWin"
             android:textSize="15dp"
             android:layout_below="@+id/imgStat"
             android:layout_marginTop="50dp"
@@ -66,7 +57,7 @@
             android:id="@+id/nbExp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="nbExp"
+            android:text="@string/nombreExp"
             android:textSize="15dp"
             android:textColor="#000"
             android:layout_toRightOf="@+id/titleExp"
@@ -78,7 +69,7 @@
             android:id="@+id/titleLevel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Votre level:"
+            android:text="@string/playerLevel"
             android:textSize="15dp"
             android:layout_below="@+id/titleExp"
             android:layout_marginTop="20dp"
@@ -88,7 +79,7 @@
             android:id="@+id/nbLevel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="nbLevel"
+            android:text="@string/nombreLevel"
             android:textSize="15dp"
             android:textColor="#000"
             android:layout_toRightOf="@+id/titleLevel"
@@ -112,14 +103,15 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="400dp"
             android:layout_toRightOf="@+id/imgLanguage"
-            android:text="CHOIX DU LANGAGE"
+            android:text="@string/choiceLanguage"
             android:textColor="#FE5303"
             android:textSize="15dp"
             android:textStyle="bold"/>
 
         <Switch
             android:id="@+id/switchFr"
-            android:text="Français   "
+            android:text="@string/frenchLanguage"
+            android:checked="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -128,8 +120,8 @@
             android:layout_marginLeft="70dp"/>
 
         <Switch
-            android:id="@+id/switchGb"
-            android:text="Anglais   "
+            android:id="@+id/switchEn"
+            android:text="@string/englishLanguage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"

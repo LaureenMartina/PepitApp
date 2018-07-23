@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">PepitCodingGame</string>
+    <string name="inscription">Inscription</string>
+    <string name="connexion">Connexion</string>
+    <string name="password">Password</string>
+    <string name="age">Age</string>
+
+    <string name="drawer_open">drawer_open</string>
+    <string name="drawer_close">drawer_close</string>
+
+    <string name="questionQuizz">question</string>
+    <string name="validQuestionQuizz">Validation</string>
+    <string name="presentationScore">Score Presentation</string>
+    <string name="scoreObtains">Score obtained</string>
+    <string name="backToMenu">Main Menu</string>
+    <string name="rateApplication">Rate our application</string>
+    <string name="currentScore">Score :</string>
+    <string name="answerQuizz">answer</string>
+    <string name="availableLesson">Lessons availables</string>
+    <string name="lessonLinux">LINUX</string>
+    <string name="lessonJS">JAVASCRIPT</string>
+    <string name="lessonPython">PYTHON</string>
+    <string name="lessonC">LANGUAGE C</string>
+    <string name="createUsername">Username creation</string>
+    <string name="firstname">Your firstname</string>
+    <string name="lastname">Your lastname</string>
+    <string name="createPassword">Password creation</string>
+    <string name="confirmationPassword">Confirmation Password</string>
+    <string name="email">Your email</string>
+    <string name="validInscription">Register</string>
+    <string name="generalInformations">Main Informations</string>
+    <string name="paragraphInfo">Dear Player, we are pleased to present our first application Pepit\'CodingGame! You will have access to various games as well as to the courses in order to introduce you more in depth some notions on certain languages. The goal of our application is to acquire notions or simply confirm your acquired knowledge using a fun method based on evolutive games! So not a minute to lose and start the adventure with Pepit\'CodingGame !!!</string>
+    <string name="teamThank">Thank from Pepit\'Coding Game Team</string>
+    <string name="username">Username</string>
+    <string name="statistics">STATISTICS</string>
+    <string name="expWin">Experience Won:</string>
+    <string name="nombreExp">nbExp</string>
+    <string name="playerLevel">Your level:</string>
+    <string name="nombreLevel">nbLevel</string>
+    <string name="choiceLanguage">CHOICE OF LANGUAGE</string>
+    <string name="frenchLanguage">French</string>
+    <string name="englishLanguage">English</string>
+    <string name="spaceGame">Play Area</string>
+    <string name="quizzGame">Pepit\'Quizz</string>
+    <string name="sombreroGame">Casse-Sombrero</string>
+    <string name="adventureGame">Pepit\'AdventureTime</string>
+    <string name="validConnexion">Login</string>
+</resources>
