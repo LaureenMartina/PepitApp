@@ -42,9 +42,9 @@ public class QuizzPresenter {
         QuizzView = view;
     }
 
-    public void questionQuizz(Context context, int difficulty){
+    public void questionQuizz(Context context){
+
         Log.e("in question quizz", getClass().toString());
-        Log.e("Difficulty: ", String.valueOf(difficulty));
 
         String token = SaveUserDataPreferences.getToken(context);
         String baseUrl = "http://10.0.2.2:3000/";
@@ -52,7 +52,6 @@ public class QuizzPresenter {
 
         AndroidNetworking.get(baseUrl+"level_quizz/questions_quizz")
                 .addHeaders("AUTHORIZATION", token)
-                .addQueryParameter("difficulty", String.valueOf(difficulty))
                 .setTag("Connect")
                 .build()
                 .getAsJSONArray(new JSONArrayRequestListener() {

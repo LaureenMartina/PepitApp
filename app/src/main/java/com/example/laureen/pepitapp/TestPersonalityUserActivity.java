@@ -126,7 +126,7 @@ public class TestPersonalityUserActivity extends AppCompatActivity implements Te
 
 
         cptQuestion += 1;
-        if(cptQuestion < arrQuestionsPersonality.size() -1){
+        if(cptQuestion < arrQuestionsPersonality.size()){
             nextQuestion();
         }
     }

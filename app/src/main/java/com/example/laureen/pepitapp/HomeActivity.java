@@ -2,20 +2,28 @@ package com.example.laureen.pepitapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.example.laureen.pepitapp.model.SaveUserDataPreferences;
 import com.example.laureen.pepitapp.presenter.ProfilUserPresenter;
 import com.example.laureen.pepitapp.view.ProfilUserView;
 
 import java.util.Locale;
+
+import static com.example.laureen.pepitapp.model.SaveUserDataPreferences.PREF_USERNAME;
 
 public class HomeActivity extends MenuActivity implements ProfilUserView {
 
@@ -24,12 +32,15 @@ public class HomeActivity extends MenuActivity implements ProfilUserView {
     ImageView imgProfil;
     TextView experience;
     TextView levelUser;
-    Switch fr;
-    Switch en;
+    TextView username;
+
+    //Switch fr;
+    //Button lang;
 
     private ProfilUserPresenter profilUserPresenter;
-
+    private ProfilUserView dataUser;
     public int typeProfilUser;
+    //public String lang;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,24 +53,19 @@ public class HomeActivity extends MenuActivity implements ProfilUserView {
         imgProfil = findViewById(R.id.imgProfil);
         experience = findViewById(R.id.nbExp);
         levelUser = findViewById(R.id.nbLevel);
+        username = findViewById(R.id.nameGamer);
 
-        fr = findViewById(R.id.switchFr);
-        en = findViewById(R.id.switchEn);
+        username.setText(PREF_USERNAME);
 
-        fr.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                en.setChecked(false);
-                changeLanguage("fr");
+        //lang = findViewById(R.id.change);
+        /*lang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LocaleManager.setLocale(this);
+                finish();
+                startActivity(new Intent(HomeActivity.this, MainActivity.class));
             }
-        });
-
-        en.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                fr.setChecked(false);
-                en.setChecked(true);
-                changeLanguage("en");
-            }
-        });
+        });*/
 
         profilUserPresenter = new ProfilUserPresenter((ProfilUserView) this);
         profilUserPresenter.getProfilUser(this);
@@ -100,11 +106,4 @@ public class HomeActivity extends MenuActivity implements ProfilUserView {
     @Override
     public void setLevelUser(int levelUser) {}
 
-    public void changeLanguage (String languageSelected) {
-        Locale locale = new Locale(languageSelected);
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        config.locale= locale;
-        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
-    }
 }

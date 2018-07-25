@@ -31,7 +31,7 @@ public class ProfilUserPresenter {
         String baseUrl = "http://10.0.2.2:3000/";
 
 
-        AndroidNetworking.get(baseUrl+"users/profilbytoken")
+        AndroidNetworking.get(baseUrl+"profilbytoken")
                 .addHeaders("AUTHORIZATION", token)
                 .setTag("Connect")
                 .build()

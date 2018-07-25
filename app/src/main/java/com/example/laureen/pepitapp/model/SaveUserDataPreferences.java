@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 
 public class SaveUserDataPreferences {
 
-    private static String PREF_USERNAME; // nom du fichier
+    public static String PREF_USERNAME; // nom du fichier
     private static String TOKEN_KEY;
     private static SharedPreferences prefs;
 

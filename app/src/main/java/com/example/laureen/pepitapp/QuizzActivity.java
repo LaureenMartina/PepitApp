@@ -82,15 +82,12 @@ public class QuizzActivity extends AppCompatActivity implements QuizzView, Profi
 
         timeStartQuizz = System.currentTimeMillis();
 
-        Intent intent = getIntent();
-        difficulty = intent.getIntExtra("difficulty", 0);
-
         quizzPresenter = new QuizzPresenter((QuizzView) this);
         profilUserPresenter = new ProfilUserPresenter((ProfilUserView) this);
         //add presenter to get profil and get exp
         // add clause to know if exp is null
 
-        quizzPresenter.questionQuizz(this, difficulty);
+        quizzPresenter.questionQuizz(this);
         profilUserPresenter.getProfilUser(this);
 
         Button buttonAnswerQuizz = findViewById(R.id.btn_answer_quizz);

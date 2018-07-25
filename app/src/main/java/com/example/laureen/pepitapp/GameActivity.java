@@ -73,13 +73,12 @@ public class GameActivity extends MenuActivity implements ProfilUserView {
         btnAdventure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*int id_user = 1;
+                /*
                 Intent intent = new Intent(this, com.example.androidcaller.unity.UnityPlayerActivity.class);
-                intent.putExtra("ParamCallKey", id_user);
+                intent.putExtra("ParamCallKey", token);
 
                 startActivity(intent);*/
 
-                // TEST OPEN UNITY
                 openUnity(token);
             }
         });
