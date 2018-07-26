@@ -20,14 +20,14 @@
         </activity>
         <activity android:name=".InscriptionActivity" />
         <activity android:name=".ConnexionActivity" />
-        <activity android:name=".SuccessInscriptionActivity" />
         <activity android:name=".HomeActivity" />
-        <activity android:name=".ProfilActivity" />
-        <activity android:name=".InfoActivity" />
         <activity android:name=".InformationActivity" />
-        <activity android:name=".ProfilUserActivity" />
         <activity android:name=".GameActivity" />
+        <activity android:name=".LessonActivity"></activity>
         <activity android:name=".QuizzActivity" />
+        <activity android:name=".ResultQuizzActivity" />
+        <activity android:name=".TestPersonalityUserActivity"></activity>
+        <activity android:name=".RateActivity" />
         <activity android:name=".ResultQuizzActivity"></activity>
         <activity android:name=".SombreroActivity" />
         <activity android:name=".SombreroListActivity" />

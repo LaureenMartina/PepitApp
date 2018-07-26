@@ -5,4 +5,6 @@ public interface ConnectView {
     public void onClickOnButtonSignIn();
 
     void validationData(String token);
+    void popupAlert();
+    void errorConnectData();
 }

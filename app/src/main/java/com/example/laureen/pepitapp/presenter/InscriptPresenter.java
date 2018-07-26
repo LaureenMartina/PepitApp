@@ -2,15 +2,14 @@ package com.example.laureen.pepitapp.presenter;
 
 import android.util.Log;
 
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.StringRequestListener;
 import com.example.laureen.pepitapp.PepitService;
-import com.example.laureen.pepitapp.model.User;
 import com.example.laureen.pepitapp.view.InscriptView;
 
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class InscriptPresenter {
 
@@ -25,59 +24,54 @@ public class InscriptPresenter {
     }
 
     // fonction vérifiant le remplissage du formulaire d'inscription
-    public void verifyData(String lastname, String firstname, String username, String email, String password, String confirmPassword, Integer age){
-        if(lastname.equals("") || firstname.equals("") || username.equals("") || email.equals("") || password.equals("") || confirmPassword.equals("") || (age < 12 && age > 80)) {
+    public void verifyData(String username, String lastname, String firstname, String email, String password, String confirmPassword, Integer age){
+        if(username.equals("") || lastname.equals("") || firstname.equals("") || email.equals("") || password.equals("") || confirmPassword.equals("") || (age < 12 && age > 80)) {
             inscriptView.failedVerif();
         }
         else if (!password.equals(confirmPassword)){
-                inscriptView.failedVerifPassword();
+            inscriptView.failedVerifPassword();
         }
         else {
-                inscriptView.validationData(firstname, lastname, username, password, confirmPassword, age, email);
-                signup(firstname, lastname, username, password, confirmPassword, age, email);
+            signup(username, firstname, lastname, password, confirmPassword, age, email);
         }
     }
 
-    public void signup(String firstname, String lastname, String username, String password, String confirmPassword, int age, String email){
+    public void signup(String username, String firstname, String lastname, String password, String confirmPassword, int age, String email){
+        String baseUrl = "http://10.0.2.2:3000/";
+        JSONObject userJson = new JSONObject();
+        try {
+            userJson.put("username", username);
+            userJson.put("firstname", firstname);
+            userJson.put("lastname", lastname);
+            userJson.put("password", password);
+            userJson.put("confirmPassword", confirmPassword);
+            userJson.put("age", age);
+            userJson.put("email", email);
 
-        Callback<List<User>> userCallback = new Callback<List<User>>() {
-            @Override
-            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
-                if (response.isSuccessful()) {
-                    // TODO :
-                } else {
-                    Log.d("QuestionsCallback", "Code: " + response.code() + " Message: " + response.message());
-                }
-            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
-            @Override
-            public void onFailure(Call<List<User>> call, Throwable t) {
-                t.printStackTrace();
-            }
-        };
+        Log.e("username:", username);
+        Log.e("lastname:", lastname);
 
-        Callback<User> createUserCallback = new Callback<User>() {
-            @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                if (response.isSuccessful()) {
-                    // TODO
-                } else {
-                    Log.d("QuestionsCallback", "Code: " + response.code() + " Message: " + response.message());
-                }
-            }
+        AndroidNetworking.post(baseUrl+"auth/signup")
+                .addJSONObjectBody(userJson)
+                .setTag("Inscription")
+                .build()
+                .getAsString(new StringRequestListener() {
+                    @Override
+                    public void onResponse(String response) {
+                        String token = response; //stocker le token crypté envoyé par le serveur
+                        inscriptView.validationData(token);
+                    }
 
-            @Override
-            public void onFailure(Call<User> call, Throwable t) {
-                t.printStackTrace();
-            }
-        };
+                    @Override
+                    public void onError(ANError anError) {
+                        anError.printStackTrace();
+                    }
+                });
 
-        /*Call<List<User>> list = service.getUser();
-        list.enqueue(userCallback);*/
-
-        //Call<User> createUser = service.createUser(new User("Escape", "game", "fun", "azerty", "azerty", 21, "fun@gmail.com", "ninja", 1));
-        Call<User> createUser = service.createUser(new User(firstname, lastname, username, password, confirmPassword, age, email, "junior", 1));
-        createUser.enqueue(createUserCallback);
     }
 
 }

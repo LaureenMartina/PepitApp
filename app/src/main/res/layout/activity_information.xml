@@ -10,7 +10,7 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Informations Générales"
+        android:text="@string/generalInformations"
         android:textStyle="bold"
         android:textColor="#FE5303"
         android:textSize="25dp"
@@ -28,13 +28,13 @@
         android:layout_marginRight="30dp"
         android:textSize="15dp"
         android:textColor="#000"
-        android:text="\t\tCher Joueur, nous avons le plaisir de vous présenter notre première application Pepit'CodingGame !\n\n\t\tVous aurez accès à divers jeux ainsi qu'aux cours afin de vous introduire plus en profondeur quelques notions sur certains langages.\n\n\t\tLe but de notre application est d'acquérir des notions ou de confirmer simplement vos acquis suivant une méthode ludique basée sur des jeux évolutifs !\n\n\t\tAlors pas une minute à perdre et commencer l'aventure avec Pepit'CodingGame !!!"
+        android:text="@string/paragraphInfo"
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="L'équipe Pepit'CodingGame"
+        android:text="@string/teamThank"
         android:textStyle="italic"
         android:textColor="#FE5303"
         android:textSize="15dp"

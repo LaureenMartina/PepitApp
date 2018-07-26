@@ -1,16 +1,50 @@
 <resources>
     <string name="app_name">PepitCodingGame</string>
     <string name="inscription">Inscription</string>
-    <string name="connexion">connexion</string>
-    <string name="pseudo">Pseudo</string>
-    <string name="mot_de_passe">Mot de Passe</string>
+    <string name="connexion">Connexion</string>
+    <string name="password">Mot de Passe</string>
     <string name="age">Age</string>
+
     <string name="drawer_open">drawer_open</string>
     <string name="drawer_close">drawer_close</string>
-    <string name="pourcentString">%1$d % fait</string>
-    <string name="pourcent2String">%1$d fait</string>
-    <string name="pourcent3String">%1$d fait</string>
 
+    <string name="questionQuizz">question</string>
+    <string name="validQuestionQuizz">Valider</string>
+    <string name="presentationScore">Presentation Score</string>
+    <string name="scoreObtains">Score obtenu</string>
+    <string name="backToMenu">Menu principal</string>
+    <string name="rateApplication">Noter notre application</string>
+    <string name="currentScore">Score :</string>
+    <string name="answerQuizz">reponse</string>
+    <string name="availableLesson">Cours disponibles</string>
+    <string name="lessonLinux">LINUX</string>
+    <string name="lessonJS">JAVASCRIPT</string>
+    <string name="lessonPython">PYTHON</string>
+    <string name="lessonC">LANGAGE C</string>
+    <string name="createUsername">Creation du Pseudo</string>
+    <string name="firstname">Votre Prénom</string>
+    <string name="lastname">Votre Nom</string>
+    <string name="createPassword">Creation du Mot de passe</string>
+    <string name="confirmationPassword">Confirmation Mot de passe</string>
+    <string name="email">Votre email</string>
+    <string name="validInscription">S\'inscrire</string>
+    <string name="generalInformations">Informations Générales</string>
+    <string name="paragraphInfo">\t\tCher Joueur, nous avons le plaisir de vous présenter notre première application Pepit\'CodingGame !\n\t\tVous aurez accès à divers jeux ainsi qu\'aux cours afin de vous introduire plus en profondeur quelques notions sur certains langages.\n\t\tLe but de notre application est d\'acquérir des notions ou de confirmer simplement vos acquis suivant une méthode ludique basée sur des jeux évolutifs !\n\t\tAlors pas une minute à perdre et commencer l\'aventure avec Pepit\'CodingGame !!!</string>
+    <string name="teamThank">L\'équipe Pepit\'CodingGame</string>
+    <string name="username">Username</string>
+    <string name="statistics">STATISTIQUES</string>
+    <string name="expWin">Expérience Gagnée:</string>
+    <string name="nombreExp">nbExp</string>
+    <string name="playerLevel">Votre level:</string>
+    <string name="nombreLevel">nbLevel</string>
+    <string name="choiceLanguage">CHOIX DU LANGAGE</string>
+    <string name="frenchLanguage">Français</string>
+    <string name="englishLanguage">Anglais</string>
+    <string name="spaceGame">Espace Jeux</string>
+    <string name="quizzGame">Pépit\'Quizz</string>
+    <string name="sombreroGame">Casse Sombrero</string>
+    <string name="adventureGame">Pépit\'AdventureTime</string>
+    <string name="validConnexion">Se Connecter</string>
     <string name="nameUserString">inscrit le %1$s</string>
 
     <string name="load_question">Chargement de la question</string>

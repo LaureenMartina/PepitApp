@@ -47,17 +47,8 @@ public class MainActivity extends AppCompatActivity implements MainView {
         //instancier le Presenter de Main
         mainPresenter = new MainPresenter(this);
 
-        //gif = findViewById(R.id.gif);
         inscrip = findViewById(R.id.inscription);
         connexion = findViewById(R.id.connexion);
-
-        //animation et insertion du gif
-        //Glide
-                //.with(this)
-                //.load(R.drawable.giphy) //mettre un gif dans le activity xml
-                //.load(internetUrl)
-                //.into(gif);
-
 
         inscrip.setOnClickListener(new View.OnClickListener() {
             @Override

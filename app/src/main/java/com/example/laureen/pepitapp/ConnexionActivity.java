@@ -1,6 +1,9 @@
 package com.example.laureen.pepitapp;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -49,16 +52,30 @@ public class ConnexionActivity extends AppCompatActivity implements ConnectView 
 
     public void onClickOnButtonSignIn(){
         TextView textV = findViewById(R.id.text);
-        // mettre la progressbar a gone visibility
         textV.setText("Connexion reussie");
+    }
+
+    public void popupAlert() {
+
+        AlertDialog.Builder builder;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Dialog_Alert);
+        } else {
+            builder = new AlertDialog.Builder(this);
+        }
+        builder.setTitle("Attention")
+                .setMessage("Veuillez saisir tous les champs")
+                .setNeutralButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
     }
 
     @Override
     public void validationData(String token) {
-        // TODO : enlever le toast
-        // TODO : gestion des errors si pb sur token !
-        Toast.makeText(this, "GOOD", Toast.LENGTH_SHORT).show();
-
         //Créer le fichier spécifique au user
         String name = username.getText().toString();
         SaveUserDataPreferences dataUser = new SaveUserDataPreferences(name);
@@ -69,5 +86,9 @@ public class ConnexionActivity extends AppCompatActivity implements ConnectView 
 
         Intent intent = new Intent(ConnexionActivity.this, HomeActivity.class);
         startActivity(intent);
+    }
+
+    public void errorConnectData(){
+        Toast.makeText(this, "Données insérées incorrectes", Toast.LENGTH_SHORT).show();
     }
 }
