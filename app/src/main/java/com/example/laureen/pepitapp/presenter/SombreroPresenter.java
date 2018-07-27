@@ -113,8 +113,6 @@ public class SombreroPresenter {
                             id_game = response.getInt("id_game");
                             name = response.getString("name");
                             cell_count = response.getInt("cell");
-                            Log.e(TAG, response.toString());
-                            Log.e(TAG, String.valueOf(cell_count));
                             difficulty = response.getInt("difficulty");
                             f1 = response.getInt("f1");
                             f2 = response.getInt("f2");
@@ -135,7 +133,6 @@ public class SombreroPresenter {
                                 SombreroItem sombreroItem = new SombreroItem(color,description);
                                 grid_list.add(sombreroItem);
                             }
-                            Log.e(TAG, String.valueOf(cell_count));
 
                             Sombrero sombrero = new Sombrero(id_game, name, difficulty, cell_count, f1, f2, f3, f4, grid_list);
                             sombreroSelectedView.getSelectedSombrero(sombrero);

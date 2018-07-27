@@ -36,7 +36,6 @@ public class Sombrero {
     public Sombrero(int id_game, String name, int difficulty, int cell_count, int f1, int f2, int f3, int f4, List<SombreroItem> cell_list) {
         setId_game(id_game);
         setName(name);
-        Log.e("Sombrero1", String.valueOf(cell_count));
         setCellCount(cell_count);
         setDifficulty(difficulty);
         setF1(f1);
@@ -44,8 +43,6 @@ public class Sombrero {
         setF3(f3);
         setF4(f4);
         setCellList(cell_list);
-        Log.e("Sombrero2", String.valueOf(cell_count));
-        Log.e("Sombrero3", String.valueOf(this.cell_count));
     }
 
     public int getId_game() {
@@ -65,7 +62,6 @@ public class Sombrero {
     }
 
     public int getCellCount() {
-        Log.e("Sombrero4", String.valueOf(cell_count));
         return cell_count;
     }
 
