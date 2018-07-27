@@ -5,13 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.example.laureen.pepitapp.model.Sombrero;
-import com.example.laureen.pepitapp.model.SombreroCell;
+import com.example.laureen.pepitapp.model.SombreroItem;
 import com.example.laureen.pepitapp.presenter.SombreroPresenter;
 import com.example.laureen.pepitapp.presenter.SombreroSelectedAdapter;
 import com.example.laureen.pepitapp.view.SombreroSelectedView;
@@ -28,9 +27,9 @@ import butterknife.ButterKnife;
 
 public class SombreroSelectedActivity extends AppCompatActivity implements SombreroSelectedView {
 
-    private static final String TAG = "SombreroListActivity";
+    private static final String TAG = "SombreroSelectdActivity";
     private SombreroPresenter presenter;
-    private List<SombreroCell> sombreroList = new ArrayList<>();
+    private List<SombreroItem> sombreroList = new ArrayList<>();
 
     @BindView(R.id.gridview) RecyclerView gridView;
     @BindView(R.id.table_f1) TableLayout f_grid1;
@@ -54,10 +53,9 @@ public class SombreroSelectedActivity extends AppCompatActivity implements Sombr
 
     @Override public void getSelectedSombrero(Sombrero sombrero) {
         sombreroList = sombrero.getCellList();
+        int cell_count = sombrero.getCellCount();
 
-        Log.e(TAG, sombreroList.toString());
-
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 10);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), cell_count);
         gridView.setLayoutManager(layoutManager);
 
         gridView.setHasFixedSize(true);

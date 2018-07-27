@@ -23,6 +23,7 @@
         android:hint="@string/username"
         android:gravity="center"
         android:layout_marginTop="40dp"
+        android:text="truc"
         />
 
     <EditText
@@ -33,6 +34,7 @@
         android:gravity="center"
         android:inputType="textPassword"
         android:layout_marginTop="30dp"
+        android:text="mdp123"
         />
 
     <Button

@@ -3,7 +3,6 @@ package com.example.laureen.pepitapp.presenter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.Log;
-import android.widget.GridView;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
@@ -12,18 +11,21 @@ import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.example.laureen.pepitapp.model.Level;
 import com.example.laureen.pepitapp.model.SaveUserDataPreferences;
 import com.example.laureen.pepitapp.model.Sombrero;
-import com.example.laureen.pepitapp.model.SombreroCell;
+import com.example.laureen.pepitapp.model.SombreroItem;
 import com.example.laureen.pepitapp.view.SombreroSelectedView;
 import com.example.laureen.pepitapp.view.SombreroListView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -99,34 +101,43 @@ public class SombreroPresenter {
                     public void onResponse(JSONObject response) {
                         int id_game = 0;
                         String name = "";
-                        int cell = 0;
+                        int cell_count = 0;
                         int difficulty = 0;
                         int f1 = 0;
                         int f2 = 0;
                         int f3 = 0;
                         int f4 = 0;
-                        List<SombreroCell> grid_list = new ArrayList<>();
-                        String grid_cell ;
+
 
                         try {
                             id_game = response.getInt("id_game");
                             name = response.getString("name");
-                            cell = response.getInt("cell");
+                            cell_count = response.getInt("cell");
+                            Log.e(TAG, response.toString());
+                            Log.e(TAG, String.valueOf(cell_count));
                             difficulty = response.getInt("difficulty");
                             f1 = response.getInt("f1");
                             f2 = response.getInt("f2");
                             f3 = response.getInt("f3");
                             f4 = response.getInt("f4");
-                            grid_cell = (String) response.get("grid_list");
 
-                            JsonParser parser = new JsonParser();
-                            JsonElement arr = parser.parse(grid_cell);
-                            Gson gson = new GsonBuilder().create();
-                            SombreroCell[] cells = gson.fromJson(arr, SombreroCell[].class);
+                            List<SombreroItem> grid_list = new ArrayList<>();
+                            JSONArray array = new JSONArray(response.getString("grid_list"));
+                            String color ="";
+                            String description = "";
 
-                            grid_list.addAll(Arrays.asList(cells));
+                            for (int i = 0; i < array.length(); i++) {
 
-                            Sombrero sombrero = new Sombrero(id_game, name, cell, difficulty, f1, f2, f3, f4, grid_list);
+                                JSONObject obj = new JSONObject(array.getString(i));
+                                color = obj.getString("COLOR");
+                                description = obj.getString("description");
+
+                                SombreroItem sombreroItem = new SombreroItem(color,description);
+                                grid_list.add(sombreroItem);
+                            }
+                            Log.e(TAG, String.valueOf(cell_count));
+
+                            Sombrero sombrero = new Sombrero(id_game, name, difficulty, cell_count, f1, f2, f3, f4, grid_list);
                             sombreroSelectedView.getSelectedSombrero(sombrero);
 
                         } catch (JSONException e) {
@@ -142,4 +153,37 @@ public class SombreroPresenter {
 
         Log.i(TAG, token);
     }
+
+}
+
+class InputStreamOperations {
+
+    /**
+     * @param in : buffer with the php result
+     * @param bufSize : size of the buffer
+     * @return : the string corresponding to the buffer
+     */
+    public static String InputStreamToString (InputStream in, int bufSize) {
+        final StringBuilder out = new StringBuilder();
+        final byte[] buffer = new byte[bufSize];
+        try {
+            for (int ctr; (ctr = in.read(buffer)) != -1;) {
+                out.append(new String(buffer, 0, ctr));
+            }
+        } catch (IOException e) {
+            throw new RuntimeException("Cannot convert stream to string", e);
+        }
+        // On retourne la chaine contenant les donnees de l'InputStream
+        return out.toString();
+    }
+
+    /**
+     * @param in : buffer with the php result
+     * @return : the string corresponding to the buffer
+     */
+    public static String InputStreamToString (InputStream in) {
+        // On appelle la methode precedente avec une taille de buffer par defaut
+        return InputStreamToString(in, 1024);
+    }
+
 }

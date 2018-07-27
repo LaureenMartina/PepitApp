@@ -1,14 +1,16 @@
 package com.example.laureen.pepitapp.presenter;
 
+import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.laureen.pepitapp.R;
-import com.example.laureen.pepitapp.model.SombreroCell;
+import com.example.laureen.pepitapp.model.SombreroItem;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -18,9 +20,9 @@ import java.util.List;
  */
 
 public class SombreroSelectedAdapter extends RecyclerView.Adapter<SombreroSelectedAdapter.ViewHolder> {
-    private List<SombreroCell> list_cell;
+    private List<SombreroItem> list_cell;
 
-    public SombreroSelectedAdapter(List<SombreroCell> list_cell) {
+    public SombreroSelectedAdapter(List<SombreroItem> list_cell) {
         this.list_cell = list_cell;
     }
 
@@ -33,12 +35,16 @@ public class SombreroSelectedAdapter extends RecyclerView.Adapter<SombreroSelect
 
     @Override
     public void onBindViewHolder(@NonNull SombreroSelectedAdapter.ViewHolder viewHolder, int position) {
-        int item_url = list_cell.get(position).getItem_url();
-        int color_url = list_cell.get(position).getColor_url();
-        if (item_url != 0 && color_url != 0){
+        @DrawableRes int item_url = list_cell.get(position).getItem_url();
+        @DrawableRes int color_url = list_cell.get(position).getColor_url();
+
+        if (item_url != 0) {
             Picasso.get().load(item_url).resize(24, 12).into(viewHolder.item);
+        }
+        if (color_url != 0){
             Picasso.get().load(color_url).resize(24, 12).into(viewHolder.color);
         }
+
     }
 
     @Override

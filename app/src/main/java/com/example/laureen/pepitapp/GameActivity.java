@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.laureen.pepitapp.model.SaveUserDataPreferences;
+import com.example.laureen.pepitapp.model.Sombrero;
 import com.example.laureen.pepitapp.presenter.ProfilUserPresenter;
 import com.example.laureen.pepitapp.view.ProfilUserView;
 
@@ -66,7 +67,8 @@ public class GameActivity extends MenuActivity implements ProfilUserView {
         btnSombrero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("Sombrero imv click", " ");
+                Intent intent = new Intent(getApplicationContext(), SombreroListActivity.class);
+                startActivity(intent);
             }
         });
 
