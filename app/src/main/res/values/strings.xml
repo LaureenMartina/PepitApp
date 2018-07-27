@@ -45,4 +45,5 @@
     <string name="sombreroGame">Casse Sombrero</string>
     <string name="adventureGame">Pépit\'AdventureTime</string>
     <string name="validConnexion">Se Connecter</string>
+    <string name="sombrero_levels">Casse-Sombrero</string>
 </resources>

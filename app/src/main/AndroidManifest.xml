@@ -28,6 +28,8 @@
         <activity android:name=".ResultQuizzActivity" />
         <activity android:name=".TestPersonalityUserActivity"></activity>
         <activity android:name=".RateActivity" />
+        <activity android:name=".SombreroSelectedActivity" />
+        <activity android:name=".SombreroListActivity" />
     </application>
 
 </manifest>
